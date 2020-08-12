@@ -62,6 +62,21 @@ class CValidationState;
 struct CBlockTemplate;
 struct CNodeStateStats;
 
+inline int64_t GetMstrNodCollateral(int nHeight){
+    if (nHeight <= 600000 && nHeight > 500) {
+        return 10000;
+    } else if (nHeight <= 700000 && nHeight > 600000) {
+        return 12500;
+    } else if (nHeight <= 800000 && nHeight > 700000) {
+        return 15000;
+    } else if (nHeight <= 900000 && nHeight > 800000) {
+        return 17500;
+    } else if (nHeight <= 1000000 && nHeight > 900000) {
+        return 20000;
+     }
+    return 20000;
+}
+
 /** Default for -blockmaxsize and -blockminsize, which control the range of sizes the mining code will create **/
 static const unsigned int DEFAULT_BLOCK_MAX_SIZE = 750000;
 static const unsigned int DEFAULT_BLOCK_MIN_SIZE = 0;

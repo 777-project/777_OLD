@@ -1405,7 +1405,7 @@ CAmount CWalletTx::GetUnlockedCredit() const
         const CTxOut& txout = vout[i];
 
         if (pwallet->IsSpent(hashTx, i) || pwallet->IsLockedCoin(hashTx, i)) continue;
-        if (fMasterNode && vout[i].nValue == 10000 * COIN) continue; // do not count MN-like outputs
+        if (fMasterNode && vout[i].nValue == GetMstrNodCollateral(chainActive.Height()) * COIN)
 
         nCredit += pwallet->GetCredit(txout, ISMINE_SPENDABLE);
         if (!Params().GetConsensus().MoneyRange(nCredit))
@@ -1429,19 +1429,13 @@ CAmount CWalletTx::GetLockedCredit() const
     uint256 hashTx = GetHash();
     for (unsigned int i = 0; i < vout.size(); i++) {
         const CTxOut& txout = vout[i];
+		
+        if (pwallet->IsSpent(hashTx, i) || pwallet->IsLockedCoin(hashTx, i))
+            continue;
+        if (fMasterNode && vout[i].nValue == GetMstrNodCollateral(chainActive.Height()) * COIN)
+            continue; // do not count MN-like outputs
 
-        // Skip spent coins
-        if (pwallet->IsSpent(hashTx, i)) continue;
-
-        // Add locked coins
-        if (pwallet->IsLockedCoin(hashTx, i)) {
-            nCredit += pwallet->GetCredit(txout, ISMINE_SPENDABLE_ALL);
-        }
-
-        // Add masternode collaterals which are handled like locked coins
-        else if (fMasterNode && vout[i].nValue == 10000 * COIN) {
-            nCredit += pwallet->GetCredit(txout, ISMINE_SPENDABLE);
-        }
+        nCredit += pwallet->GetCredit(txout, ISMINE_SPENDABLE);
 
         if (!Params().GetConsensus().MoneyRange(nCredit))
             throw std::runtime_error("CWalletTx::GetLockedCredit() : value out of range");
@@ -1506,16 +1500,19 @@ CAmount CWalletTx::GetLockedWatchOnlyCredit() const
         const CTxOut& txout = vout[i];
 
         // Skip spent coins
-        if (pwallet->IsSpent(hashTx, i)) continue;
+        if (pwallet->IsSpent(hashTx, i))
+            continue;
 
         // Add locked coins
-        if (pwallet->IsLockedCoin(hashTx, i)) {
-            nCredit += pwallet->GetCredit(txout, ISMINE_WATCH_ONLY);
+        if (pwallet->IsLockedCoin(hashTx, i))
+        {
+            nCredit += pwallet->GetCredit(txout, ISMINE_SPENDABLE_ALL);
         }
 
-        // Add masternode collaterals which are handled likc locked coins
-        else if (fMasterNode && vout[i].nValue == 10000 * COIN) {
-            nCredit += pwallet->GetCredit(txout, ISMINE_WATCH_ONLY);
+        // Add masternode collaterals which are handled like locked coins
+        else if (fMasterNode && vout[i].nValue == GetMstrNodCollateral(chainActive.Height()) * COIN)
+        {
+            nCredit += pwallet->GetCredit(txout, ISMINE_SPENDABLE);
         }
 
         if (!Params().GetConsensus().MoneyRange(nCredit))
@@ -2057,7 +2054,7 @@ bool CWallet::AvailableCoins(std::vector<COutput>* pCoins,      // --> populates
             for (unsigned int i = 0; i < pcoin->vout.size(); i++) {
                 bool found = false;
                 if (nCoinType == ONLY_10000) {
-                    found = pcoin->vout[i].nValue == 10000 * COIN;
+                    found = pcoin->vout[i].nValue == GetMstrNodCollateral(chainActive.Height()) * COIN;
                 } else {
                     found = true;
                 }
