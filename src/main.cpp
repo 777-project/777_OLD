@@ -1048,7 +1048,7 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState& state, const CTransa
             //Check that txid is not already in the chain
             int nHeightTx = 0;
             if (IsTransactionInChain(tx.GetHash(), nHeightTx))
-                return state.Invalid(error("%s : zRPD spend tx %s already in block %d",
+                return state.Invalid(error("%s : z777 spend tx %s already in block %d",
                         __func__, tx.GetHash().GetHex(), nHeightTx), REJECT_DUPLICATE, "bad-txns-inputs-spent");
 
             //Check for double spending of serial #'s
@@ -1100,9 +1100,9 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState& state, const CTransa
                 }
             }
 
-            // Reject legacy zRPD mints
+            // Reject legacy z777 mints
             if (!Params().IsRegTestNet() && tx.HasZerocoinMintOutputs())
-                return state.Invalid(error("%s : tried to include zRPD mint output in tx %s",
+                return state.Invalid(error("%s : tried to include z777 mint output in tx %s",
                         __func__, tx.GetHash().GetHex()), REJECT_INVALID, "bad-txns-invalid-outputs");
 
             // are the actual inputs available?
@@ -2038,9 +2038,9 @@ bool DisconnectBlock(CBlock& block, CValidationState& state, CBlockIndex* pindex
     if (blockUndo.vtxundo.size() + 1 != block.vtx.size())
         return error("DisconnectBlock() : block and undo data inconsistent");
 
-    //Track zRPD money supply
+    //Track z777 money supply
     if (!UpdateZPIVSupplyDisconnect(block, pindex))
-        return error("%s: Failed to calculate new zRPD supply", __func__);
+        return error("%s: Failed to calculate new z777 supply", __func__);
 
     // undo transactions in reverse order
     for (int i = block.vtx.size() - 1; i >= 0; i--) {
@@ -2436,7 +2436,7 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
         setDirtyBlockIndex.insert(pindex);
     }
 
-    //Record zRPD serials
+    //Record z777 serials
     if (pwalletMain) {
         std::set<uint256> setAddedTx;
         for (const std::pair<libzerocoin::CoinSpend, uint256>& pSpend : vSpends) {
@@ -2479,13 +2479,13 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
     // add this block to the view's block chain
     view.SetBestBlock(pindex->GetBlockHash());
 
-    // Update zRPD money supply map
+    // Update z777 money supply map
     if (!UpdateZPIVSupplyConnect(block, pindex, fJustCheck)) {
-        return state.DoS(100, error("%s: Failed to calculate new zRPD supply for block=%s height=%d", __func__,
+        return state.DoS(100, error("%s: Failed to calculate new z777 supply for block=%s height=%d", __func__,
                                     block.GetHash().GetHex(), pindex->nHeight), REJECT_INVALID);
     }
 
-    // A one-time event where the zRPD supply was off (due to serial duplication off-chain on main net)
+    // A one-time event where the z777 supply was off (due to serial duplication off-chain on main net)
     if (Params().NetworkID() == CBaseChainParams::MAIN && pindex->nHeight == consensus.height_last_ZC_WrappedSerials + 1
             && GetZerocoinSupply() != consensus.ZC_WrappedSerialsSupply + GetWrapppedSerialInflationAmount()) {
         RecalculatePIVSupply(consensus.height_start_ZC, false);
@@ -3555,7 +3555,7 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
         ))
             return error("%s : CheckTransaction failed", __func__);
 
-        // double check that there are no double spent zRPD spends in this block
+        // double check that there are no double spent z777 spends in this block
         if (tx.HasZerocoinSpendInputs()) {
             for (const CTxIn& txIn : tx.vin) {
                 bool isPublicSpend = txIn.IsZerocoinPublicSpend();
@@ -3577,7 +3577,7 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
                         spend = TxInToZerocoinSpend(txIn);
                     }
                     if (std::count(vBlockSerials.begin(), vBlockSerials.end(), spend.getCoinSerialNumber()))
-                        return state.DoS(100, error("%s : Double spending of zRPD serial %s in block\n Block: %s",
+                        return state.DoS(100, error("%s : Double spending of z777 serial %s in block\n Block: %s",
                                                     __func__, spend.getCoinSerialNumber().GetHex(), block.ToString()));
                     vBlockSerials.emplace_back(spend.getCoinSerialNumber());
                 }

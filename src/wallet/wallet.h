@@ -99,7 +99,7 @@ enum AvailableCoinsType {
     STAKEABLE_COINS = 6                             // UTXO's that are valid for staking
 };
 
-// Possible states for zRPD send
+// Possible states for z777 send
 enum ZerocoinSpendStatus {
     ZPIV_SPEND_OKAY = 0,                            // No error
     ZPIV_SPEND_ERROR = 1,                           // Unspecified class of errors, more details are (hopefully) in the returning text
@@ -433,7 +433,6 @@ public:
 
     std::vector<CKeyID> GetAffectedKeys(const CScript& spk);
     void GetKeyBirthTimes(std::map<CKeyID, int64_t>& mapKeyBirth) const;
-    unsigned int ComputeTimeSmart(const CWalletTx& wtx) const;
 
     /**
      * Increment the next transaction order id
@@ -617,7 +616,7 @@ public:
     CAmount GetImmatureZerocoinBalance() const;
     std::map<libzerocoin::CoinDenomination, CAmount> GetMyZerocoinDistribution() const;
 
-    // zRPD wallet
+    // z777 wallet
     CzPIVWallet* zwalletMain{nullptr};
     std::unique_ptr<CzPIVTracker> zpivTracker{nullptr};
     void setZWallet(CzPIVWallet* zwallet);
@@ -635,7 +634,7 @@ public:
     bool UpdateMint(const CBigNum& bnValue, const int& nHeight, const uint256& txid, const libzerocoin::CoinDenomination& denom);
     // Zerocoin entry changed. (called with lock cs_wallet held)
     boost::signals2::signal<void(CWallet* wallet, const std::string& pubCoin, const std::string& isUsed, ChangeType status)> NotifyZerocoinChanged;
-    // zRPD reset
+    // z777 reset
     boost::signals2::signal<void()> NotifyzPIVReset;
 
     /* Wallets parameter interaction */
@@ -777,6 +776,10 @@ public:
     std::vector<std::pair<std::string, std::string> > vOrderForm;
     unsigned int fTimeReceivedIsTxTime;
     unsigned int nTimeReceived; //! time received by this node
+	    /**
+     * Stable timestamp representing the block time, for a transaction included in a block,
+     * or else the time when the transaction was received if it isn't yet part of a block.
+     */
     unsigned int nTimeSmart;
     char fFromMe;
     std::string strFromAccount;
@@ -914,7 +917,7 @@ public:
     bool WriteToDisk(CWalletDB *pwalletdb);
 
     int64_t GetTxTime() const;
-    int64_t GetComputedTxTime() const;
+    void UpdateTimeSmart();
     int GetRequestCount() const;
     void RelayWalletTransaction(std::string strCommand = "tx");
     std::set<uint256> GetConflicts() const;

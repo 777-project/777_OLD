@@ -216,10 +216,6 @@ public:
 	    vSeeds.push_back(CDNSSeedData("seed8.sappcoin.com", "seed8.sappcoin.com"));
 	    vSeeds.push_back(CDNSSeedData("seed9.sappcoin.com", "seed9.sappcoin.com"));
 	    vSeeds.push_back(CDNSSeedData("seed10.sappcoin.com", "seed10.sappcoin.com"));
-		vSeeds.push_back(CDNSSeedData("164.68.119.61", "164.68.119.61"));
-        vSeeds.push_back(CDNSSeedData("175.202.123.200", "175.202.123.200"));
-        vSeeds.push_back(CDNSSeedData("209.250.251.55", "209.250.251.55"));
-        vSeeds.push_back(CDNSSeedData("175.202.123.200", "175.202.123.200"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 15); // 7
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 16); // 7

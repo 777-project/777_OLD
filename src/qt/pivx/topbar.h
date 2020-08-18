@@ -45,7 +45,7 @@ public:
 	void openNetworkMonitor();
 
 public Q_SLOTS:
-    void updateBalances(const CAmount& balance, const CAmount& unconfirmedBalance, const CAmount& immatureBalance,
+    void updateBalances(const CAmount& balance, const CAmount& lockedBalance, const CAmount& unconfirmedBalance, const CAmount& immatureBalance,
                         const CAmount& zerocoinBalance, const CAmount& unconfirmedZerocoinBalance, const CAmount& immatureZerocoinBalance,
                         const CAmount& watchOnlyBalance, const CAmount& watchUnconfBalance, const CAmount& watchImmatureBalance,
                         const CAmount& delegatedBalance, const CAmount& coldStakedBalance);

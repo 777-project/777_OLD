@@ -222,7 +222,7 @@
                       <enum>Qt::NoFocus</enum>
                      </property>
                      <property name="text">
-                      <string>3) 777 privacy? What is Zerocoin (zRPD)?</string>
+                      <string>3) 777 privacy? What is Zerocoin (z777)?</string>
                      </property>
                      <property name="checkable">
                       <bool>true</bool>
@@ -250,7 +250,7 @@
                       <enum>Qt::NoFocus</enum>
                      </property>
                      <property name="text">
-                      <string>4) Why are my zRPD unspendable?</string>
+                      <string>4) Why are my z777 unspendable?</string>
                      </property>
                      <property name="checkable">
                       <bool>true</bool>
@@ -273,7 +273,7 @@
                      </property>
                      <property name="text">
                       <string>5) Why did my wallet convert the balance
-    into zRPD automatically?</string>
+    into z777 automatically?</string>
                      </property>
                      <property name="checkable">
                       <bool>true</bool>
@@ -295,7 +295,7 @@
                       <enum>Qt::NoFocus</enum>
                      </property>
                      <property name="text">
-                      <string>6) How do I receive 777/zRPD?</string>
+                      <string>6) How do I receive 777/z777?</string>
                      </property>
                      <property name="checkable">
                       <bool>true</bool>
@@ -317,7 +317,7 @@
                       <enum>Qt::NoFocus</enum>
                      </property>
                      <property name="text">
-                      <string>7) How do I stake 777/zRPD?</string>
+                      <string>7) How do I stake 777/z777?</string>
                      </property>
                      <property name="checkable">
                       <bool>true</bool>
@@ -628,7 +628,7 @@
                            that can be easily transferred globally, instantly, and with near
                            zero fees.  777 incorporates market leading security &amp;
                            privacy and is also the first PoS (Proof of Stake) Cryptocurrency
-                           to implement ZeroCoin(zRPD) and Zerocoin staking.
+                           to implement ZeroCoin(z777) and Zerocoin staking.
                            &lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;
                            777 utilizes a Proof of Stake (PoS) consensus system algorithm,
                            allowing all owners of 777 to participate in earning block rewards
@@ -800,7 +800,7 @@
                       <item>
                        <widget class="QLabel" name="labelSubtitle3">
                         <property name="text">
-                         <string>777 privacy? What is Zerocoin (zRPD)?</string>
+                         <string>777 privacy? What is Zerocoin (z777)?</string>
                         </property>
                         <property name="wordWrap">
                          <bool>true</bool>
@@ -828,11 +828,11 @@
                         <property name="text">
                          <string>
                            &lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;
-                           zRPD is an optional privacy-centric method of coin mixing on the
+                           z777 is an optional privacy-centric method of coin mixing on the
                            777 blockchain. Basically all your transactions cannot be tracked
                            on to any block explorer. You can read more about the technicals in the
                            &lt;a style='color: #b088ff' href='https://777.org/zpiv/'&gt;
-                           &quot;777 Zerocoin (zRPD) Technical Paper&quot;&lt;/a&gt;.
+                           &quot;777 Zerocoin (z777) Technical Paper&quot;&lt;/a&gt;.
                            &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
                          </string>
                         </property>
@@ -898,7 +898,7 @@
                       <item>
                        <widget class="QLabel" name="labelSubtitle4">
                         <property name="text">
-                         <string>Why are my zRPD unspendable?</string>
+                         <string>Why are my z777 unspendable?</string>
                         </property>
                         <property name="wordWrap">
                          <bool>true</bool>
@@ -926,7 +926,7 @@
                         <property name="text">
                          <string>
                            &lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;
-                           After minting, zRPD will require 20 confirmations as well as 1
+                           After minting, z777 will require 20 confirmations as well as 1
                            additional mint of the same denomination on the network to
                            become eligible for spending.
                            &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
@@ -994,7 +994,7 @@
                       <item>
                        <widget class="QLabel" name="labelSubtitle5">
                         <property name="text">
-                         <string>Why did my wallet convert the balance into zRPD automatically?</string>
+                         <string>Why did my wallet convert the balance into z777 automatically?</string>
                         </property>
                         <property name="wordWrap">
                          <bool>true</bool>
@@ -1023,17 +1023,17 @@
                          <string>
                            &lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;
                            By default the 777 wallet will convert 10% of your entire 777
-                           balance to zRPD to assist the network. If you do not wish to
-                           stake zRPD or take advantage of the privacy benefit it brings,
+                           balance to z777 to assist the network. If you do not wish to
+                           stake z777 or take advantage of the privacy benefit it brings,
                            you can disable the automatic minting in your 777 wallet by
-                           going to Settings-&gt;Options and deselecting “Enable zRPD Automint”.
+                           going to Settings-&gt;Options and deselecting “Enable z777 Automint”.
                            If you are not making use of the 777-QT or GUI you can simply open
                            your jackpot.conf file and add &lt;i&gt;enablezeromint=0&lt;/i&gt; Without the quotation
                            marks and restart your wallet to disable automint.&lt;/p&gt;
                            &lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;
-                           You can read more about zRPD in the
-                           &lt;a style='color: #b088ff' href='https://777.org/zpiv/'&gt; &quot;777 Zerocoin (zRPD) Technical Paper&quot;&lt;/a&gt;.
-                           If you would like to keep and stake your zRPD, please read the &quot;How do I stake&quot;
+                           You can read more about z777 in the
+                           &lt;a style='color: #b088ff' href='https://777.org/zpiv/'&gt; &quot;777 Zerocoin (z777) Technical Paper&quot;&lt;/a&gt;.
+                           If you would like to keep and stake your z777, please read the &quot;How do I stake&quot;
                            section of the FAQ below.
                            &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
                          </string>
@@ -1103,7 +1103,7 @@
                       <item>
                        <widget class="QLabel" name="labelSubtitle6">
                         <property name="text">
-                         <string>How do I receive 777/zRPD?</string>
+                         <string>How do I receive 777/z777?</string>
                         </property>
                         <property name="wordWrap">
                          <bool>true</bool>
@@ -1131,10 +1131,10 @@
                         <property name="text">
                          <string>
                            &lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;
-                           zRPD can be spent and sent to any 777 address. The receiver will
-                           receive standard 777 but the origin of the 777 is anonymized by the zRPD Protocol.
+                           z777 can be spent and sent to any 777 address. The receiver will
+                           receive standard 777 but the origin of the 777 is anonymized by the z777 Protocol.
                            &lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;
-                           If you want more zRPD you will need to mint your balance in the “Privacy” tab.
+                           If you want more z777 you will need to mint your balance in the “Privacy” tab.
                            &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
                          </string>
                         </property>
@@ -1200,7 +1200,7 @@
                       <item>
                        <widget class="QLabel" name="labelSubtitle7">
                         <property name="text">
-                         <string>How do I stake 777/zRPD?</string>
+                         <string>How do I stake 777/z777?</string>
                         </property>
                         <property name="wordWrap">
                          <bool>true</bool>
@@ -1242,12 +1242,12 @@
                            You can see the status of staking in the wallet by mousing over the package icon in the row on the top left of the wallet interface. There package will be lit up and will state &quot;Staking Enabled&quot; to indicate it is staking.  Using the command line interface (jackpot-cli); the command &lt;i&gt;getstakingstatus&lt;/i&gt; will confirm that staking is active.
                            &lt;/li&gt;&lt;/ol&gt;
                            &lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;
-                           To Stake zRPD:
+                           To Stake z777:
                            &lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;
                            &lt;ol&gt;&lt;li&gt;
                            Make sure your wallet is completely synchronized and you are using the latest release.
                            &lt;li&gt;
-                           Your newly minted or existing zRPD balance must have a minimum of 200 confirmations.
+                           Your newly minted or existing z777 balance must have a minimum of 200 confirmations.
                            &lt;li&gt;
                            Your wallet must stay online and be unlocked for anonymization and staking purposes.
                            Staking should now be enabled.

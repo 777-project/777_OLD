@@ -52,7 +52,7 @@ TopBar::TopBar(PIVXGUI* _mainWindow, QWidget *parent) :
 
     // Amount information top
     ui->widgetTopAmount->setVisible(false);
-    setCssProperty({ui->labelAmountTopPiv, ui->labelAmountTopzPiv}, "amount-small-topbar");
+    setCssProperty({ui->labelLockedPiv, ui->labelAmountTopzPiv}, "amount-small-topbar");
     setCssProperty({ui->labelAvailablezPiv, ui->labelTotalPiv}, "amount-topbar");
     setCssProperty({ui->labelAmountPiv, ui->labelPendingPiv, ui->labelPendingzPiv, ui->labelImmaturePiv, ui->labelImmaturezPiv, ui->labelLockedPiv}, "amount-small-topbar");
 
@@ -96,7 +96,7 @@ TopBar::TopBar(PIVXGUI* _mainWindow, QWidget *parent) :
     ui->pushButtonInfo->setChecked(false);
 
     ui->pushButtonConf->setButtonClassStyle("cssClass", "btn-check-conf");
-    ui->pushButtonConf->setButtonText("sap.conf");
+    ui->pushButtonConf->setButtonText("jackpot.conf");
     ui->pushButtonConf->setChecked(false);
 
     ui->pushButtonMasternodes->setButtonClassStyle("cssClass", "btn-check-masternodes");
@@ -592,7 +592,8 @@ void TopBar::loadWalletModel()
         });
     }
 
-    connect(walletModel, &WalletModel::balanceChanged, this, &TopBar::updateBalances);
+    connect(walletModel, SIGNAL(balanceChanged(CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount)), this,
+                   SLOT(updateBalances(CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount)));
     connect(walletModel->getOptionsModel(), &OptionsModel::displayUnitChanged, this, &TopBar::updateDisplayUnit);
     connect(walletModel, &WalletModel::encryptionStatusChanged, this, &TopBar::refreshStatus);
     // Ask for passphrase if needed
@@ -662,28 +663,22 @@ void TopBar::updateDisplayUnit()
         int displayUnitPrev = nDisplayUnit;
         nDisplayUnit = walletModel->getOptionsModel()->getDisplayUnit();
         if (displayUnitPrev != nDisplayUnit)
-            updateBalances(walletModel->getBalance(), walletModel->getUnconfirmedBalance(), walletModel->getImmatureBalance(),
+            updateBalances(walletModel->getBalance(), walletModel->getLockedBalance(), walletModel->getUnconfirmedBalance(), walletModel->getImmatureBalance(),
                            walletModel->getZerocoinBalance(), walletModel->getUnconfirmedZerocoinBalance(), walletModel->getImmatureZerocoinBalance(),
                            walletModel->getWatchBalance(), walletModel->getWatchUnconfirmedBalance(), walletModel->getWatchImmatureBalance(),
                            walletModel->getDelegatedBalance(), walletModel->getColdStakedBalance());
     }
 }
 
-void TopBar::updateBalances(const CAmount& balance, const CAmount& unconfirmedBalance, const CAmount& immatureBalance,
+void TopBar::updateBalances(const CAmount& balance, const CAmount& lockedBalance, const CAmount& unconfirmedBalance, const CAmount& immatureBalance,
                             const CAmount& zerocoinBalance, const CAmount& unconfirmedZerocoinBalance, const CAmount& immatureZerocoinBalance,
                             const CAmount& watchOnlyBalance, const CAmount& watchUnconfBalance, const CAmount& watchImmatureBalance,
-                            const CAmount& delegatedBalance, const CAmount& coldStakedBalance)
-{
-    // Locked balance. //TODO move this to the signal properly in the future..
-    CAmount nLockedBalance = 0;
-    if (walletModel) {
-        nLockedBalance = walletModel->getLockedBalance();
-    }
-
+                            const CAmount& delegatedBalance, const CAmount& coldStakedBalance) {
 
     // 777 Total
-    CAmount pivAvailableBalance = balance - nLockedBalance;
-    // zRPD Balance
+    CAmount pivAvailableBalance = balance - lockedBalance + immatureBalance;
+		
+    // z777 Balance
     CAmount matureZerocoinBalance = zerocoinBalance - unconfirmedZerocoinBalance - immatureZerocoinBalance;
 
     // Set
@@ -691,18 +686,20 @@ void TopBar::updateBalances(const CAmount& balance, const CAmount& unconfirmedBa
 
     // 777
     // Top
-    ui->labelAmountTopPiv->setText(GUIUtil::formatBalance(pivAvailableBalance, nDisplayUnit));
+    ui->labelAmountTopPiv->setText(GUIUtil::formatBalance(lockedBalance, nDisplayUnit));
     // Expanded
+	
     ui->labelAmountPiv->setText(GUIUtil::formatBalance(pivAvailableBalance, nDisplayUnit));
     ui->labelTotalPiv->setText(GUIUtil::formatBalance(balance, nDisplayUnit));
     ui->labelPendingPiv->setText(GUIUtil::formatBalance(unconfirmedBalance, nDisplayUnit));
     ui->labelImmaturePiv->setText(GUIUtil::formatBalance(immatureBalance, nDisplayUnit));
-	ui->labelLockedPiv->setText(GUIUtil::formatBalance(nLockedBalance, nDisplayUnit));
+	ui->labelLockedPiv->setText(GUIUtil::formatBalance(lockedBalance, nDisplayUnit));
 
-    // Update display state and/or values for zRPD balances as necessary
+
+    // Update display state and/or values for z777 balances as necessary
     bool fHaveZerocoins = zerocoinBalance > 0;
 
-    // Set visibility of zRPD label titles/values
+    // Set visibility of z777 label titles/values
     ui->typeSpacerTop->setVisible(fHaveZerocoins);
     ui->typeSpacerExpanded->setVisible(fHaveZerocoins);
     ui->labelAmountTopzPiv->setVisible(fHaveZerocoins);

@@ -178,7 +178,7 @@ public:
     void decryptKey(const std::vector<unsigned char>& crypted, const std::string& slt, const std::string& pwd, CKey& key);
     void emitBalanceChanged(); // Force update of UI-elements even when no values have changed
 
-    // return minted zRPD
+    // return minted z777
     bool getMint(const uint256& hashSerial, CZerocoinMint& mint);
 
     // Check address for validity
@@ -204,7 +204,7 @@ public:
 
     // Send coins to a list of recipients
     SendCoinsReturn sendCoins(WalletModelTransaction& transaction);
-    // Mint zRPD
+    // Mint z777
     bool mintCoins(CAmount value, CCoinControl* coinControl, std::string &strError);
 
     bool createZpivSpend(
@@ -323,6 +323,7 @@ private:
 
     // Cache some values to be able to detect changes
     CAmount cachedBalance;
+	CAmount cachedLockedBalance;
     CAmount cachedUnconfirmedBalance;
     CAmount cachedImmatureBalance;
     CAmount cachedZerocoinBalance;
@@ -346,7 +347,7 @@ private:
 
 Q_SIGNALS:
     // Signal that balance in wallet changed
-    void balanceChanged(const CAmount& balance, const CAmount& unconfirmedBalance, const CAmount& immatureBalance,
+    void balanceChanged(const CAmount& balance, const CAmount& lockedBalance, const CAmount& unconfirmedBalance, const CAmount& immatureBalance,
                         const CAmount& zerocoinBalance, const CAmount& unconfirmedZerocoinBalance, const CAmount& immatureZerocoinBalance,
                         const CAmount& watchOnlyBalance, const CAmount& watchUnconfBalance, const CAmount& watchImmatureBalance,
                         const CAmount& delegatedBalance, const CAmount& coldStakingBalance);

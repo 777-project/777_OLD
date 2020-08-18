@@ -63,6 +63,12 @@ struct TxLessThan {
     }
 };
 
+struct ConvertTxToVectorResult
+{
+    QList<TransactionRecord> records;
+    qint64 nFirstLoadedTxTime{0};
+};
+
 // Private implementation
 class TransactionTablePriv
 {
@@ -80,7 +86,12 @@ public:
      * this is sorted by sha256.
      */
     QList<TransactionRecord> cachedWallet;
-    bool hasZcTxes = false;
+
+    /**
+     * Time of the oldest transaction loaded into the model.
+     * It can or not be the first tx in the wallet, the model only loads the last 20k txs.
+     */
+    qint64 nFirstLoadedTxTime{0};
 
     /* Query entire wallet anew from core.
      */
@@ -102,7 +113,7 @@ public:
                 // txs are stored in order in the db, which is what should be happening)
                 sort(walletTxes.begin(), walletTxes.end(),
                         [](const CWalletTx & a, const CWalletTx & b) -> bool {
-                         return a.GetComputedTxTime() > b.GetComputedTxTime();
+                          return a.GetTxTime() > b.GetTxTime();
                      });
 
                 // Only latest ones.
@@ -116,7 +127,7 @@ public:
             // Size of the tx subsets
             std::size_t const subsetSize = txesSize / (threadsCount + 1);
             std::size_t totalSumSize = 0;
-            QList<QFuture<QList<TransactionRecord>>> tasks;
+            QList<QFuture<ConvertTxToVectorResult>> tasks;
 
             // Subsets + run task
             for (std::size_t i = 0; i < threadsCount; ++i) {
@@ -136,46 +147,41 @@ public:
             auto res = convertTxToRecords(this, wallet,
                                               std::vector<CWalletTx>(walletTxes.end() - remainingSize, walletTxes.end())
             );
-            cachedWallet.append(res);
+            cachedWallet.append(res.records);
+            nFirstLoadedTxTime = res.nFirstLoadedTxTime;
 
             for (auto &future : tasks) {
                 future.waitForFinished();
-                cachedWallet.append(future.result());
+                ConvertTxToVectorResult convertRes = future.result();
+                cachedWallet.append(convertRes.records);
+                if (nFirstLoadedTxTime > convertRes.nFirstLoadedTxTime) {
+                    nFirstLoadedTxTime = convertRes.nFirstLoadedTxTime;
+                }
             }
         } else {
             // Single thread flow
-            cachedWallet.append(convertTxToRecords(this, wallet, walletTxes));
+            ConvertTxToVectorResult convertRes = convertTxToRecords(this, wallet, walletTxes);
+            cachedWallet.append(convertRes.records);
+            nFirstLoadedTxTime = convertRes.nFirstLoadedTxTime;
         }
     }
 
-    static QList<TransactionRecord> convertTxToRecords(TransactionTablePriv* tablePriv, const CWallet* wallet, const std::vector<CWalletTx>& walletTxes) {
-        QList<TransactionRecord> cachedWallet;
+    static ConvertTxToVectorResult convertTxToRecords(TransactionTablePriv* tablePriv, const CWallet* wallet, const std::vector<CWalletTx>& walletTxes) {
+        ConvertTxToVectorResult res;
 
-        bool hasZcTxes = tablePriv->hasZcTxes;
         for (const auto &tx : walletTxes) {
             QList<TransactionRecord> records = TransactionRecord::decomposeTransaction(wallet, tx);
-
-            if (!hasZcTxes) {
-                for (const TransactionRecord &record : records) {
-                    hasZcTxes = HasZcTxesIfNeeded(record);
-                    if (hasZcTxes) break;
+            if (!records.isEmpty()) {
+                qint64 time = records.first().time;
+                if (res.nFirstLoadedTxTime == 0 || res.nFirstLoadedTxTime > time) {
+                    res.nFirstLoadedTxTime = time;
                 }
             }
 
-            cachedWallet.append(records);
+            res.records.append(records);
         }
 
-        if (hasZcTxes) // Only update it if it's true, multi-thread operation.
-            tablePriv->hasZcTxes = true;
-
-        return cachedWallet;
-    }
-
-    static bool HasZcTxesIfNeeded(const TransactionRecord& record) {
-        return (record.type == TransactionRecord::ZerocoinMint ||
-                record.type == TransactionRecord::ZerocoinSpend ||
-                record.type == TransactionRecord::ZerocoinSpend_Change_zPiv ||
-                record.type == TransactionRecord::ZerocoinSpend_FromMe);
+        return res;
     }
 
     /* Update our model of the wallet incrementally, to synchronize our model of the wallet
@@ -221,15 +227,22 @@ public:
                         qWarning() << "TransactionTablePriv::updateWallet : Warning: Got CT_NEW, but transaction is not in wallet";
                         break;
                     }
+                    const CWalletTx& wtx = mi->second;
+
+                    // As old transactions are still getting updated (+20k range),
+                    // do not add them if we deliberately didn't load them at startup.
+                    if (cachedWallet.size() >= MAX_AMOUNT_LOADED_RECORDS && wtx.GetTxTime() < nFirstLoadedTxTime) {
+                        return;
+                    }
+                
                     // Added -- insert at the right position
                     QList<TransactionRecord> toInsert =
-                        TransactionRecord::decomposeTransaction(wallet, mi->second);
+                        TransactionRecord::decomposeTransaction(wallet, wtx);
                     if (!toInsert.isEmpty()) { /* only if something to insert */
                         parent->beginInsertRows(QModelIndex(), lowerIndex, lowerIndex + toInsert.size() - 1);
                         int insert_idx = lowerIndex;
                         for (const TransactionRecord& rec : toInsert) {
                             cachedWallet.insert(insert_idx, rec);
-                            if (!hasZcTxes) hasZcTxes = HasZcTxesIfNeeded(rec);
                             insert_idx += 1;
                             ret = rec; // Return record
                         }
@@ -257,11 +270,7 @@ public:
     int size()
     {
         return cachedWallet.size();
-    }
 
-    bool containsZcTxes()
-    {
-        return hasZcTxes;
     }
 
     TransactionRecord* index(int idx)
@@ -370,10 +379,6 @@ int TransactionTableModel::size() const{
     return priv->size();
 }
 
-bool TransactionTableModel::hasZcTxes() {
-    return priv->containsZcTxes();
-}
-
 QString TransactionTableModel::formatTxStatus(const TransactionRecord* wtx) const
 {
     QString status;
@@ -455,7 +460,7 @@ QString TransactionTableModel::formatTxType(const TransactionRecord* wtx) const
     case TransactionRecord::StakeMint:
         return tr("777 Stake");
     case TransactionRecord::StakeZPIV:
-        return tr("zRPD Stake");
+        return tr("z777 Stake");
     case TransactionRecord::StakeDelegated:
         return tr("777 Cold Stake");
     case TransactionRecord::StakeHot:
@@ -470,15 +475,15 @@ QString TransactionTableModel::formatTxType(const TransactionRecord* wtx) const
     case TransactionRecord::Generated:
         return tr("Mined");
     case TransactionRecord::ZerocoinMint:
-        return tr("Converted 777 to zRPD");
+        return tr("Converted 777 to z777");
     case TransactionRecord::ZerocoinSpend:
-        return tr("Spent zRPD");
+        return tr("Spent z777");
     case TransactionRecord::RecvFromZerocoinSpend:
-        return tr("Received 777 from zRPD");
+        return tr("Received 777 from z777");
     case TransactionRecord::ZerocoinSpend_Change_zPiv:
-        return tr("Minted Change as zRPD from zRPD Spend");
+        return tr("Minted Change as z777 from z777 Spend");
     case TransactionRecord::ZerocoinSpend_FromMe:
-        return tr("Converted zRPD to 777");
+        return tr("Converted z777 to 777");
     default:
         return QString();
     }

@@ -395,7 +395,7 @@ std::string HelpMessage(HelpMessageMode mode)
     strUsage += HelpMessageOpt("-pid=<file>", strprintf(_("Specify pid file (default: %s)"), "pivxd.pid"));
 #endif
     strUsage += HelpMessageOpt("-reindex", _("Rebuild block chain index from current blk000??.dat files") + " " + _("on startup"));
-    strUsage += HelpMessageOpt("-reindexmoneysupply", _("Reindex the 777 and zRPD money supply statistics") + " " + _("on startup"));
+    strUsage += HelpMessageOpt("-reindexmoneysupply", _("Reindex the 777 and z777 money supply statistics") + " " + _("on startup"));
     strUsage += HelpMessageOpt("-resync", _("Delete blockchain folders and resync from scratch") + " " + _("on startup"));
 #if !defined(WIN32)
     strUsage += HelpMessageOpt("-sysperms", _("Create new files with system default permissions, instead of umask 077 (only effective with disabled wallet functionality)"));
@@ -534,7 +534,7 @@ std::string HelpMessage(HelpMessageMode mode)
     strUsage += HelpMessageOpt("-staking=<n>", strprintf(_("Enable staking functionality (0-1, default: %u)"), 1));
     strUsage += HelpMessageOpt("-coldstaking=<n>", strprintf(_("Enable cold staking functionality (0-1, default: %u). Disabled if staking=0"), 1));
     strUsage += HelpMessageOpt("-pivstake=<n>", strprintf(_("Enable or disable staking functionality for 777 inputs (0-1, default: %u)"), 1));
-    strUsage += HelpMessageOpt("-zpivstake=<n>", strprintf(_("Enable or disable staking functionality for zRPD inputs (0-1, default: %u)"), 1));
+    strUsage += HelpMessageOpt("-zpivstake=<n>", strprintf(_("Enable or disable staking functionality for z777 inputs (0-1, default: %u)"), 1));
     strUsage += HelpMessageOpt("-reservebalance=<amt>", _("Keep the specified amount available for spending at all times (default: 0)"));
     if (GetBoolArg("-help-debug", false)) {
         strUsage += HelpMessageOpt("-printstakemodifier", _("Display the stake modifier calculations in the debug.log file."));

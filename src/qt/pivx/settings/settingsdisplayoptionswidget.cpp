@@ -33,8 +33,8 @@ SettingsDisplayOptionsWidget::SettingsDisplayOptionsWidget(PIVXGUI* _window, QWi
     ui->labelSubtitle1->setText(tr("Customize the display view options"));
     setCssSubtitleScreen(ui->labelSubtitle1);
 
-    ui->labelTitleLanguage->setText(tr("Language"));
-    ui->labelTitleLanguage->setProperty("cssClass", "text-main-settings");
+    //ui->labelTitleLanguage->setText(tr("Language"));
+    //ui->labelTitleLanguage->setProperty("cssClass", "text-main-settings");
 
     ui->labelTitleUnit->setText(tr("Unit to show amount"));
     ui->labelTitleUnit->setProperty("cssClass", "text-main-settings");
@@ -58,13 +58,13 @@ SettingsDisplayOptionsWidget::SettingsDisplayOptionsWidget(PIVXGUI* _window, QWi
 #endif
 
     // Combobox
-    ui->comboBoxLanguage->setProperty("cssClass", "btn-combo");
-    ui->comboBoxLanguage->setView(new QListView());
-    ui->comboBoxLanguage->setEditable(true);
-    QLineEdit* LanguageEdit = new QLineEdit(ui->comboBoxLanguage);
-    LanguageEdit->setReadOnly(true);
-    LanguageEdit->setAlignment(Qt::AlignRight);
-    ui->comboBoxLanguage->setLineEdit(LanguageEdit);
+   //ui->comboBoxLanguage->setProperty("cssClass", "btn-combo");
+    //ui->comboBoxLanguage->setView(new QListView());
+    //ui->comboBoxLanguage->setEditable(true);
+    //QLineEdit* LanguageEdit = new QLineEdit(ui->comboBoxLanguage);
+    //LanguageEdit->setReadOnly(true);
+    //LanguageEdit->setAlignment(Qt::AlignRight);
+    //ui->comboBoxLanguage->setLineEdit(LanguageEdit);
 
     ui->comboBoxUnit->setProperty("cssClass", "btn-combo");
     ui->comboBoxUnit->setView(new QListView());
@@ -114,21 +114,21 @@ SettingsDisplayOptionsWidget::SettingsDisplayOptionsWidget(PIVXGUI* _window, QWi
 void SettingsDisplayOptionsWidget::initLanguages()
 {
     /* Language selector */
-    QDir translations(":translations");
+    /**  QDir translations(":translations");
     QString defaultStr = QString("(") + tr("default") + QString(")");
     ui->comboBoxLanguage->addItem(defaultStr, QVariant(""));
     Q_FOREACH (const QString& langStr, translations.entryList()) {
         QLocale locale(langStr);
 
         /** check if the locale name consists of 2 parts (language_country) */
-        if (langStr.contains("_")) {
+        //if (langStr.contains("_")) {
             /** display language strings as "native language - native country (locale name)", e.g. "Deutsch - Deutschland (de)" */
-            ui->comboBoxLanguage->addItem(locale.nativeLanguageName() + QString(" - ") + locale.nativeCountryName() + QString(" (") + langStr + QString(")"), QVariant(langStr));
-        } else {
+           // ui->comboBoxLanguage->addItem(locale.nativeLanguageName() + QString(" - ") + locale.nativeCountryName() + QString(" (") + langStr + QString(")"), QVariant(langStr));
+        //} else {
             /** display language strings as "native language (locale name)", e.g. "Deutsch (de)" */
-            ui->comboBoxLanguage->addItem(locale.nativeLanguageName() + QString(" (") + langStr + QString(")"), QVariant(langStr));
-        }
-    }
+            //ui->comboBoxLanguage->addItem(locale.nativeLanguageName() + QString(" (") + langStr + QString(")"), QVariant(langStr));
+        //}
+    //}
 }
 
 void SettingsDisplayOptionsWidget::onResetClicked()
@@ -144,7 +144,7 @@ void SettingsDisplayOptionsWidget::onResetClicked()
 void SettingsDisplayOptionsWidget::setMapper(QDataWidgetMapper *mapper)
 {
     mapper->addMapping(ui->comboBoxDigits, OptionsModel::Digits);
-    mapper->addMapping(ui->comboBoxLanguage, OptionsModel::Language);
+    //mapper->addMapping(ui->comboBoxLanguage, OptionsModel::Language);
     mapper->addMapping(ui->comboBoxUnit, OptionsModel::DisplayUnit);
     mapper->addMapping(ui->pushButtonSwitchBalance, OptionsModel::HideZeroBalances);
 #ifdef USE_QTCHARTS

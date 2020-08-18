@@ -1830,7 +1830,15 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 }
 
 QPushButton[cssClass="btn-chart-arrow"] {
-    qproperty-icon: url("://ic-arrow-left-white") ;
+    qproperty-icon: url("://ic-arrow-drop-up-purple") ;
+    qproperty-iconSize: 12px 12px;
+    background-color: transparent;
+    border:0px;
+    border-radius:2px;
+}
+
+QPushButton[cssClass="btn-chart-arrow-right"] {
+    qproperty-icon: url("://ic-arrow-drop-down-purple") ;
     qproperty-iconSize: 12px 12px;
     background-color: transparent;
     border:0px;
@@ -1842,6 +1850,14 @@ QPushButton[cssClass="btn-chart-arrow"]:hover {
 }
 
 QPushButton[cssClass="btn-chart-arrow"]:pressed {
+    background-color:#00192e;
+}
+
+QPushButton[cssClass="btn-chart-arrow-right"]:hover {
+    background-color: #000000;
+}
+
+QPushButton[cssClass="btn-chart-arrow-right"]:pressed {
     background-color:#00192e;
 }
 

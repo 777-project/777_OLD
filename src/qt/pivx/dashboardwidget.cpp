@@ -42,7 +42,7 @@ DashboardWidget::DashboardWidget(PIVXGUI* parent) :
     // Containers
     setCssProperty({this, ui->left}, "container");
     ui->left->setContentsMargins(0,0,0,0);
-	setCssProperty(ui->right, "container-right");
+    setCssProperty(ui->right, "container-right");
     ui->right->setContentsMargins(20,20,20,0);
 
     // Title
@@ -116,8 +116,6 @@ DashboardWidget::DashboardWidget(PIVXGUI* parent) :
     ui->listTransactions->setMinimumHeight(NUM_ITEMS * (DECORATION_SIZE + 2));
     ui->listTransactions->setAttribute(Qt::WA_MacShowFocusRect, false);
     ui->listTransactions->setSelectionBehavior(QAbstractItemView::SelectRows);
-    ui->listTransactions->setLayoutMode(QListView::LayoutMode::Batched);
-    ui->listTransactions->setBatchSize(50);
     ui->listTransactions->setUniformItemSizes(true);
 
     // Sync Warning
@@ -133,7 +131,7 @@ DashboardWidget::DashboardWidget(PIVXGUI* parent) :
     ui->labelEmpty->setText(tr("No transactions yet"));
     setCssProperty(ui->labelEmpty, "text-empty");
     setCssProperty(ui->chartContainer, "container-chart");
-	setCssProperty(ui->chartContainer2, "container-chart");
+    setCssProperty(ui->chartContainer2, "container-chart");
     setCssProperty(ui->pushImgEmptyChart, "img-empty-staking-on");
 
     setCssProperty(ui->labelEmptyChart, "text-empty");
@@ -215,10 +213,10 @@ void DashboardWidget::loadWalletModel()
         // chart filter
         stakesFilter = new TransactionFilterProxy();
         stakesFilter->setDynamicSortFilter(true);
-		stakesFilter->setOnlyStakesandMNTxes(true);
+        stakesFilter->setOnlyStakesandMNTxes(true);
         stakesFilter->setSourceModel(txModel);
         hasStakes = stakesFilter->rowCount() > 0;
-		loadChart();
+        loadChart();
 #endif
     }
     // update the display unit, to not use the default ("777")
@@ -226,7 +224,7 @@ void DashboardWidget::loadWalletModel()
 }
 
 void DashboardWidget::onTxArrived(const QString& hash, const bool& isCoinStake, const bool& isCSAnyType, const bool& isMasternodeReward) {
-   showList();
+    showList();
 #ifdef USE_QTCHARTS
     if (isCoinStake || isMasternodeReward) {
         // Update value if this is our first stake
@@ -357,8 +355,10 @@ void DashboardWidget::setChartShow(ChartShowType type)
     this->chartShow = type;
     if (chartShow == MONTH) {
         ui->containerChartArrow->setVisible(true);
+        ui->containerChartArrow2->setVisible(true);
     } else {
         ui->containerChartArrow->setVisible(false);
+        ui->containerChartArrow2->setVisible(false);
     }
     if (isChartInitialized) refreshChart();
 }
@@ -374,7 +374,7 @@ void DashboardWidget::loadChart()
             QDate currentDate = QDate::currentDate();
             monthFilter = currentDate.month();
             yearFilter = currentDate.year();
-			dayStart = std::max(currentDate.day() - 8, 1);
+            dayStart = std::max(currentDate.day() - 8, 1);
             for (int i = 1; i < 13; ++i) ui->comboBoxMonths->addItem(QString(monthsNames[i-1]), QVariant(i));
             ui->comboBoxMonths->setCurrentIndex(monthFilter - 1);
             connect(ui->comboBoxMonths, static_cast<void (QComboBox::*)(const QString&)>(&QComboBox::currentIndexChanged),
@@ -433,7 +433,7 @@ void DashboardWidget::initChart()
     ui->chartContainer->setLayout(baseScreensContainer);
     ui->chartContainer->setContentsMargins(0,0,0,0);
     setCssProperty(ui->chartContainer, "container-chart");
-	ui->chartContainer2->setLayout(baseScreensContainer);
+    ui->chartContainer2->setLayout(baseScreensContainer);
     ui->chartContainer2->setContentsMargins(0,0,0,0);
     setCssProperty(ui->chartContainer2, "container-chart");
 }
@@ -463,7 +463,7 @@ void DashboardWidget::changeChartColors(){
 	if (set1) set1->setBorderColor(gridLineColorX);
 }
 
-void DashboardWidget::updateStakeFilter(){
+void DashboardWidget::updateStakeFilter() {
     if (chartShow != ALL) {
         bool filterByMonth = false;
         if (monthFilter != 0 && chartShow == MONTH) {
@@ -498,7 +498,7 @@ void DashboardWidget::updateStakeFilter(){
     }
 }
 
-// pair 777, zRPD
+// pair 777, z777
 const QMap<int, std::pair<qint64, qint64>> DashboardWidget::getAmountBy()
 {
     updateStakeFilter();
@@ -509,7 +509,7 @@ const QMap<int, std::pair<qint64, qint64>> DashboardWidget::getAmountBy()
         QModelIndex modelIndex = stakesFilter->index(i, TransactionTableModel::ToAddress);
         qint64 amount = llabs(modelIndex.data(TransactionTableModel::AmountRole).toLongLong());
         QDate date = modelIndex.data(TransactionTableModel::DateRole).toDateTime().date();
-		bool isPiv = modelIndex.data(TransactionTableModel::TypeRole).toInt() != TransactionRecord::StakeZPIV && modelIndex.data(TransactionTableModel::TypeRole).toInt() != TransactionRecord::MNReward;
+        bool isPiv = modelIndex.data(TransactionTableModel::TypeRole).toInt() != TransactionRecord::StakeZPIV && modelIndex.data(TransactionTableModel::TypeRole).toInt() != TransactionRecord::MNReward;
         bool isMN = modelIndex.data(TransactionTableModel::TypeRole).toInt() == TransactionRecord::MNReward;
 
         int time = 0;
@@ -534,10 +534,10 @@ const QMap<int, std::pair<qint64, qint64>> DashboardWidget::getAmountBy()
             if (isPiv) {
                 amountBy[time].first += amount;
             }
-		else if (isMN){
+            else if (isMN){
                 amountBy[time].second += amount;
-				hasMNRewards = true;
-		    }
+                hasMNRewards = true;
+            }
         } else {
             if (isPiv) {
                 amountBy[time] = std::make_pair(amount, 0);
@@ -550,14 +550,14 @@ const QMap<int, std::pair<qint64, qint64>> DashboardWidget::getAmountBy()
     return amountBy;
 }
 
-bool DashboardWidget::loadChartData(bool withMonthNames){
+bool DashboardWidget::loadChartData(bool withMonthNames) {
     if (chartData) {
         delete chartData;
         chartData = nullptr;
     }
 
     chartData = new ChartData();
-    chartData->amountsByCache = getAmountBy(); // pair 777, zRPD
+    chartData->amountsByCache = getAmountBy(); // pair 777, z777
 
     std::pair<int,int> range = getChartRange(chartData->amountsByCache);
     if (range.first == 0 && range.second == 0) {
@@ -571,19 +571,19 @@ bool DashboardWidget::loadChartData(bool withMonthNames){
     for (int j = range.first; j < range.second; j++) {
         int num = (isOrderedByMonth && j > daysInMonth) ? (j % daysInMonth) : j;
         qreal piv = 0;
-		qreal mnrewards = 0;
+        qreal mnrewards = 0;
         if (chartData->amountsByCache.contains(num)) {
             std::pair <qint64, qint64> pair = chartData->amountsByCache[num];
             piv = (pair.first != 0) ? pair.first / 100000000 : 0;
-			mnrewards = (pair.second != 0) ? pair.second / 100000000 : 0;
+            mnrewards = (pair.second != 0) ? pair.second / 100000000 : 0;
             chartData->totalPiv += pair.first;
-			chartData->totalMNRewards += pair.second;
+            chartData->totalMNRewards += pair.second;
         }
 
         chartData->xLabels << ((withMonthNames) ? monthsNames[num - 1] : QString::number(num));
 
         chartData->valuesPiv.append(piv);
-		chartData->valuesMNRewards.append(mnrewards);
+        chartData->valuesMNRewards.append(mnrewards);
 
         int max = std::max(piv, mnrewards);
         if (max > chartData->maxValue) {
@@ -770,9 +770,22 @@ void DashboardWidget::updateAxisX(const QStringList* args)
 
 void DashboardWidget::onChartArrowClicked(bool goLeft)
 {
+	bool updateMonth = false;
+    bool updateYear = false;
+    int dataEndDate = getChartRange(chartData->amountsByCache).second;
+    QDate currentDate = QDate::currentDate();
     if (goLeft) {
         dayStart--;
         if (dayStart == 0) {
+			updateMonth = true;
+            if (monthFilter == 1) {
+                // Prev year
+                monthFilter = 12;
+                yearFilter--;
+                updateYear = true;
+            } else {
+                monthFilter--; // Prev month
+            }
             dayStart = QDate(yearFilter, monthFilter, 1).daysInMonth();
         }
     } else {
@@ -780,9 +793,29 @@ void DashboardWidget::onChartArrowClicked(bool goLeft)
         dayStart++;
         if (dayStart > dayInMonth) {
             dayStart = 1;
+			updateMonth = true;
+            if (monthFilter == 12) {
+                // Next year
+                monthFilter = 1;
+                yearFilter++;
+                updateYear = true;
+            } else {
+                monthFilter++; // Next month
+            }
         }
     }
     refreshChart();
+	//Check if data end day is current date and monthfilter is current month
+    bool fEndDayisCurrent = dataEndDate  == currentDate.day() && monthFilter == currentDate.month();
+
+    if (updateMonth)
+        ui->comboBoxMonths->setCurrentIndex(monthFilter - 1);
+
+    if (updateYear)
+        ui->comboBoxYears->setCurrentText(QString::number(yearFilter));
+
+    // enable/disable the pushButtonChartRight.
+    ui->pushButtonChartRight->setEnabled(!fEndDayisCurrent);
 }
 
 void DashboardWidget::windowResizeEvent(QResizeEvent* event)

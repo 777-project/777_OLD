@@ -2558,7 +2558,7 @@ UniValue walletpassphrase(const UniValue& params, bool fHelp)
         throw std::runtime_error(
             "walletpassphrase \"passphrase\" timeout ( stakingonly )\n"
             "\nStores the wallet decryption key in memory for 'timeout' seconds.\n"
-            "This is needed prior to performing transactions related to private keys such as sending RPDs\n"
+            "This is needed prior to performing transactions related to private keys such as sending 777s\n"
 
             "\nArguments:\n"
             "1. \"passphrase\"     (string, required) The wallet passphrase\n"
@@ -2723,7 +2723,7 @@ UniValue encryptwallet(const UniValue& params, bool fHelp)
             "\nExamples:\n"
             "\nEncrypt you wallet\n" +
             HelpExampleCli("encryptwallet", "\"my pass phrase\"") +
-            "\nNow set the passphrase to use the wallet, such as for signing or sending RPDs\n" +
+            "\nNow set the passphrase to use the wallet, such as for signing or sending 777s\n" +
             HelpExampleCli("walletpassphrase", "\"my pass phrase\"") +
             "\nNow we can so something like sign\n" +
             HelpExampleCli("signmessage", "\"jackpotaddress\" \"test message\"") +
@@ -2767,7 +2767,7 @@ UniValue lockunspent(const UniValue& params, bool fHelp)
             "lockunspent unlock [{\"txid\":\"txid\",\"vout\":n},...]\n"
             "\nUpdates list of temporarily unspendable outputs.\n"
             "Temporarily lock (unlock=false) or unlock (unlock=true) specified transaction outputs.\n"
-            "A locked transaction output will not be chosen by automatic coin selection, when spending RPDs.\n"
+            "A locked transaction output will not be chosen by automatic coin selection, when spending 777s.\n"
             "Locks are stored in memory only. Nodes start with zero locked outputs, and the locked output list\n"
             "is always cleared (by virtue of process exit) when a node stops or fails.\n"
             "Also see the listunspent call\n"
@@ -3359,11 +3359,11 @@ UniValue getzerocoinbalance(const UniValue& params, bool fHelp)
     if (fHelp || params.size() != 0)
         throw std::runtime_error(
             "getzerocoinbalance\n"
-            "\nReturn the wallet's total zRPD balance.\n" +
+            "\nReturn the wallet's total z777 balance.\n" +
             HelpRequiringPassphrase() + "\n"
 
             "\nResult:\n"
-            "amount         (numeric) Total zRPD balance.\n"
+            "amount         (numeric) Total z777 balance.\n"
 
             "\nExamples:\n" +
             HelpExampleCli("getzerocoinbalance", "") + HelpExampleRpc("getzerocoinbalance", ""));
@@ -3387,7 +3387,7 @@ UniValue listmintedzerocoins(const UniValue& params, bool fHelp)
     if (fHelp || params.size() > 2)
         throw std::runtime_error(
             "listmintedzerocoins (fVerbose) (fMatureOnly)\n"
-            "\nList all zRPD mints in the wallet.\n" +
+            "\nList all z777 mints in the wallet.\n" +
             HelpRequiringPassphrase() + "\n"
 
             "\nArguments:\n"
@@ -3406,7 +3406,7 @@ UniValue listmintedzerocoins(const UniValue& params, bool fHelp)
             "  {\n"
             "    \"serial hash\": \"xxx\",   (string) Mint serial hash in hex format.\n"
             "    \"version\": n,   (numeric) Zerocoin version number.\n"
-            "    \"zRPD ID\": \"xxx\",   (string) Pubcoin in hex format.\n"
+            "    \"z777 ID\": \"xxx\",   (string) Pubcoin in hex format.\n"
             "    \"denomination\": n,   (numeric) Coin denomination.\n"
             "    \"mint height\": n     (numeric) Height of the block containing this mint.\n"
             "    \"confirmations\": n   (numeric) Number of confirmations.\n"
@@ -3439,7 +3439,7 @@ UniValue listmintedzerocoins(const UniValue& params, bool fHelp)
             UniValue objMint(UniValue::VOBJ);
             objMint.push_back(Pair("serial hash", m.hashSerial.GetHex()));  // Serial hash
             objMint.push_back(Pair("version", m.nVersion));                 // Zerocoin version
-            objMint.push_back(Pair("zRPD ID", m.hashPubcoin.GetHex()));     // PubCoin
+            objMint.push_back(Pair("z777 ID", m.hashPubcoin.GetHex()));     // PubCoin
             int denom = libzerocoin::ZerocoinDenominationToInt(m.denom);
             objMint.push_back(Pair("denomination", denom));                 // Denomination
             objMint.push_back(Pair("mint height", m.nHeight));              // Mint Height
@@ -3516,7 +3516,7 @@ UniValue listspentzerocoins(const UniValue& params, bool fHelp)
     if (fHelp || params.size() != 0)
         throw std::runtime_error(
             "listspentzerocoins\n"
-            "\nList all the spent zRPD mints in the wallet.\n" +
+            "\nList all the spent z777 mints in the wallet.\n" +
             HelpRequiringPassphrase() + "\n"
 
             "\nResult:\n"
@@ -3548,11 +3548,11 @@ UniValue mintzerocoin(const UniValue& params, bool fHelp)
     if (fHelp || params.size() < 1 || params.size() > 2)
         throw std::runtime_error(
             "mintzerocoin amount ( utxos )\n"
-            "\nMint the specified zRPD amount\n" +
+            "\nMint the specified z777 amount\n" +
             HelpRequiringPassphrase() + "\n"
 
             "\nArguments:\n"
-            "1. amount      (numeric, required) Enter an amount of Piv to convert to zRPD\n"
+            "1. amount      (numeric, required) Enter an amount of Piv to convert to z777\n"
             "2. utxos       (string, optional) A json array of objects.\n"
             "                   Each object needs the txid (string) and vout (numeric)\n"
             "  [\n"
@@ -3589,7 +3589,7 @@ UniValue mintzerocoin(const UniValue& params, bool fHelp)
 
 
     if (!Params().IsRegTestNet())
-        throw JSONRPCError(RPC_WALLET_ERROR, "zRPD minting is DISABLED");
+        throw JSONRPCError(RPC_WALLET_ERROR, "z777 minting is DISABLED");
 
     LOCK2(cs_main, pwalletMain->cs_wallet);
 
@@ -3603,7 +3603,7 @@ UniValue mintzerocoin(const UniValue& params, bool fHelp)
 
     int64_t nTime = GetTimeMillis();
     if(sporkManager.IsSporkActive(SPORK_16_ZEROCOIN_MAINTENANCE_MODE))
-        throw JSONRPCError(RPC_WALLET_ERROR, "zRPD is currently disabled due to maintenance.");
+        throw JSONRPCError(RPC_WALLET_ERROR, "z777 is currently disabled due to maintenance.");
 
     EnsureWalletIsUnlocked(true);
 
@@ -3668,7 +3668,7 @@ UniValue spendzerocoin(const UniValue& params, bool fHelp)
     if (fHelp || params.size() > 2 || params.size() < 1)
         throw std::runtime_error(
             "spendzerocoin amount ( \"address\" )\n"
-            "\nSpend zRPD to a 777 address.\n" +
+            "\nSpend z777 to a 777 address.\n" +
             HelpRequiringPassphrase() + "\n"
 
             "\nArguments:\n"
@@ -3706,7 +3706,7 @@ UniValue spendzerocoin(const UniValue& params, bool fHelp)
     LOCK2(cs_main, pwalletMain->cs_wallet);
 
     if(sporkManager.IsSporkActive(SPORK_16_ZEROCOIN_MAINTENANCE_MODE))
-        throw JSONRPCError(RPC_WALLET_ERROR, "zRPD is currently disabled due to maintenance.");
+        throw JSONRPCError(RPC_WALLET_ERROR, "z777 is currently disabled due to maintenance.");
 
     CAmount nAmount = AmountFromValue(params[0]);        // Spending amount
     const std::string address_str = (params.size() > 1 ? params[1].get_str() : "");
@@ -3721,7 +3721,7 @@ UniValue spendzerocoinmints(const UniValue& params, bool fHelp)
     if (fHelp || params.size() < 1 || params.size() > 2)
         throw std::runtime_error(
             "spendzerocoinmints mints_list ( \"address\" ) \n"
-            "\nSpend zRPD mints to a 777 address.\n" +
+            "\nSpend z777 mints to a 777 address.\n" +
             HelpRequiringPassphrase() + "\n"
 
             "\nArguments:\n"
@@ -3758,7 +3758,7 @@ UniValue spendzerocoinmints(const UniValue& params, bool fHelp)
     LOCK2(cs_main, pwalletMain->cs_wallet);
 
     if(sporkManager.IsSporkActive(SPORK_16_ZEROCOIN_MAINTENANCE_MODE))
-        throw JSONRPCError(RPC_WALLET_ERROR, "zRPD is currently disabled due to maintenance.");
+        throw JSONRPCError(RPC_WALLET_ERROR, "z777 is currently disabled due to maintenance.");
 
     UniValue arrMints = params[0].get_array();
     const std::string address_str = (params.size() > 1 ? params[1].get_str() : "");
@@ -4045,12 +4045,12 @@ UniValue exportzerocoins(const UniValue& params, bool fHelp)
 
             "\nArguments:\n"
             "1. \"include_spent\"        (bool, required) Include mints that have already been spent\n"
-            "2. \"denomination\"         (integer, optional) Export a specific denomination of zRPD\n"
+            "2. \"denomination\"         (integer, optional) Export a specific denomination of z777\n"
 
             "\nResult:\n"
             "[                   (array of json object)\n"
             "  {\n"
-            "    \"id\": \"serial hash\",  (string) the mint's zRPD serial hash \n"
+            "    \"id\": \"serial hash\",  (string) the mint's z777 serial hash \n"
             "    \"d\": n,         (numeric) the mint's zerocoin denomination \n"
             "    \"p\": \"pubcoin\", (string) The public coin\n"
             "    \"s\": \"serial\",  (string) The secret serial number\n"
@@ -4058,8 +4058,8 @@ UniValue exportzerocoins(const UniValue& params, bool fHelp)
             "    \"t\": \"txid\",    (string) The txid that the coin was minted in\n"
             "    \"h\": n,         (numeric) The height the tx was added to the blockchain\n"
             "    \"u\": used,      (boolean) Whether the mint has been spent\n"
-            "    \"v\": version,   (numeric) The version of the zRPD\n"
-            "    \"k\": \"privkey\"  (string) The zRPD private key (V2+ zRPD only)\n"
+            "    \"v\": version,   (numeric) The version of the z777\n"
+            "    \"k\": \"privkey\"  (string) The z777 private key (V2+ z777 only)\n"
             "  }\n"
             "  ,...\n"
             "]\n"
@@ -4130,7 +4130,7 @@ UniValue importzerocoins(const UniValue& params, bool fHelp)
             "\nResult:\n"
             "{\n"
             "  \"added\": n,        (numeric) The quantity of zerocoin mints that were added\n"
-            "  \"value\": amount    (numeric) The total zRPD value of zerocoin mints that were added\n"
+            "  \"value\": amount    (numeric) The total z777 value of zerocoin mints that were added\n"
             "}\n"
 
             "\nExamples\n" +
@@ -4210,7 +4210,7 @@ UniValue reconsiderzerocoins(const UniValue& params, bool fHelp)
     if(fHelp || !params.empty())
         throw std::runtime_error(
             "reconsiderzerocoins\n"
-            "\nCheck archived zRPD list to see if any mints were added to the blockchain.\n" +
+            "\nCheck archived z777 list to see if any mints were added to the blockchain.\n" +
             HelpRequiringPassphrase() + "\n"
 
             "\nResult:\n"
@@ -4295,11 +4295,11 @@ UniValue getzpivseed(const UniValue& params, bool fHelp)
     if(fHelp || !params.empty())
         throw std::runtime_error(
             "getzpivseed\n"
-            "\nCheck archived zRPD list to see if any mints were added to the blockchain.\n" +
+            "\nCheck archived z777 list to see if any mints were added to the blockchain.\n" +
             HelpRequiringPassphrase() + "\n"
 
             "\nResult\n"
-            "\"seed\" : s,  (string) The deterministic zRPD seed.\n"
+            "\"seed\" : s,  (string) The deterministic z777 seed.\n"
 
             "\nExamples\n" +
             HelpExampleCli("getzpivseed", "") + HelpExampleRpc("getzpivseed", ""));
@@ -4320,12 +4320,12 @@ UniValue generatemintlist(const UniValue& params, bool fHelp)
     if(fHelp || params.size() != 2)
         throw std::runtime_error(
             "generatemintlist\n"
-            "\nShow mints that are derived from the deterministic zRPD seed.\n" +
+            "\nShow mints that are derived from the deterministic z777 seed.\n" +
             HelpRequiringPassphrase() + "\n"
 
             "\nArguments\n"
-            "1. \"count\"  : n,  (numeric) Which sequential zRPD to start with.\n"
-            "2. \"range\"  : n,  (numeric) How many zRPD to generate.\n"
+            "1. \"count\"  : n,  (numeric) Which sequential z777 to start with.\n"
+            "2. \"range\"  : n,  (numeric) How many z777 to generate.\n"
 
             "\nResult:\n"
             "[\n"
@@ -4368,7 +4368,7 @@ UniValue dzpivstate(const UniValue& params, bool fHelp) {
     if (fHelp || params.size() != 0)
         throw std::runtime_error(
                 "dzpivstate\n"
-                        "\nThe current state of the mintpool of the deterministic zRPD wallet.\n" +
+                        "\nThe current state of the mintpool of the deterministic z777 wallet.\n" +
                 HelpRequiringPassphrase() + "\n"
 
                         "\nExamples\n" +
@@ -4420,12 +4420,12 @@ UniValue searchdzpiv(const UniValue& params, bool fHelp)
     if(fHelp || params.size() != 3)
         throw std::runtime_error(
             "searchdzpiv\n"
-            "\nMake an extended search for deterministically generated zRPD that have not yet been recognized by the wallet.\n" +
+            "\nMake an extended search for deterministically generated z777 that have not yet been recognized by the wallet.\n" +
             HelpRequiringPassphrase() + "\n"
 
             "\nArguments\n"
-            "1. \"count\"       (numeric) Which sequential zRPD to start with.\n"
-            "2. \"range\"       (numeric) How many zRPD to generate.\n"
+            "1. \"count\"       (numeric) Which sequential z777 to start with.\n"
+            "2. \"range\"       (numeric) How many z777 to generate.\n"
             "3. \"threads\"     (numeric) How many threads should this operation consume.\n"
 
             "\nExamples\n" +
@@ -4492,7 +4492,7 @@ UniValue spendrawzerocoin(const UniValue& params, bool fHelp)
     LOCK2(cs_main, pwalletMain->cs_wallet);
 
     if (sporkManager.IsSporkActive(SPORK_16_ZEROCOIN_MAINTENANCE_MODE))
-            throw JSONRPCError(RPC_WALLET_ERROR, "zRPD is currently disabled due to maintenance.");
+            throw JSONRPCError(RPC_WALLET_ERROR, "z777 is currently disabled due to maintenance.");
 
     CBigNum serial;
     serial.SetHex(params[0].get_str());

@@ -7,15 +7,14 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="300px"
-   height="100px"
-   viewBox="0 0 300 100"
+   id="Layer_1"
+   data-name="Layer 1"
+   viewBox="0 0 120.41 120.41"
    version="1.1"
-   id="svg27"
-   sodipodi:docname="img-logo-pivx.svg"
+   sodipodi:docname="img-nav-logo.svg"
    inkscape:version="0.92.4 (5da689c313, 2019-01-14)">
   <metadata
-     id="metadata33">
+     id="metadata17">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
@@ -25,13 +24,6 @@
       </cc:Work>
     </rdf:RDF>
   </metadata>
-  <defs
-     id="defs31">
-    <style
-       id="style2">.cls-1{fill:#66f;}</style>
-    <style
-       id="style2-5">.cls-1{fill:none;}.cls-2{fill:#ed1c24;}.cls-3{fill:#fff;}.cls-4{font-size:24.1px;fill:#333;font-family:Nunito-Regular, Nunito;letter-spacing:0.2em;}</style>
-  </defs>
   <sodipodi:namedview
      pagecolor="#ffffff"
      bordercolor="#666666"
@@ -43,123 +35,42 @@
      inkscape:pageshadow="2"
      inkscape:window-width="640"
      inkscape:window-height="480"
-     id="namedview29"
+     id="namedview15"
      showgrid="false"
-     inkscape:zoom="3.79693"
-     inkscape:cx="79.04017"
-     inkscape:cy="64.119345"
-     inkscape:current-layer="svg27" />
-  <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
-  <title
-     id="title2">Artboard</title>
-  <desc
-     id="desc4">Created with Sketch.</desc>
+     inkscape:zoom="2.2091188"
+     inkscape:cx="60.205002"
+     inkscape:cy="60.205002"
+     inkscape:current-layer="Layer_1" />
+  <defs
+     id="defs4">
+    <style
+       id="style2">.cls-1{fill:#fff;stroke:#333;stroke-miterlimit:10;}.cls-2,.cls-3{font-size:44.21px;fill:#212121;font-family:Nunito-Regular, Nunito;}.cls-2{letter-spacing:0.2em;}.cls-3{letter-spacing:0.2em;}</style>
+  </defs>
   <g
-     data-name="Layer 2"
-     id="Layer_2-4"
-     transform="matrix(0.53498616,0,0,0.53498616,5.936132,13.035799)">
-    <g
-       data-name="Layer 1"
-       id="Layer_1-2-7">
-      <g
-         data-name="Layer 2"
-         id="Layer_2-2">
-        <g
-           id="Logo">
-          <rect
-             id="rect6"
-             height="128"
-             width="128"
-             class="cls-1"
-             x="0"
-             y="0"
-             style="fill:none" />
-          <path
-             id="path8-4"
-             d="m 18,79.29 a 15.37,15.37 0 0 1 -1.65,7.39 11.36,11.36 0 0 1 -4.51,4.65 14.35,14.35 0 0 1 -6.55,1.75 V 88.45 A 8.41,8.41 0 0 0 10.94,86 q 2.24,-2.24 2.24,-6.87 v -29 H 18 Z"
-             class="cls-2"
-             inkscape:connector-curvature="0"
-             style="fill:#ed1c24" />
-          <path
-             id="path10-6"
-             d="m 24.43,76.94 a 5.83,5.83 0 0 1 6.12,-6.08 5.73,5.73 0 0 1 6,6 v 5.57 h -2.5 v -2.17 a 4.11,4.11 0 0 1 -4,2.52 5.55,5.55 0 0 1 -5.62,-5.84 z m 9.41,-0.12 a 3.33,3.33 0 1 0 -3.32,3.41 3.21,3.21 0 0 0 3.32,-3.41 z"
-             class="cls-2"
-             inkscape:connector-curvature="0"
-             style="fill:#ed1c24" />
-          <path
-             id="path12"
-             d="m 42.94,76.82 a 5.82,5.82 0 0 1 6.1,-6 5.68,5.68 0 0 1 5.86,4.58 h -2.75 a 3.41,3.41 0 1 0 0,2.84 H 54.9 A 5.68,5.68 0 0 1 49,82.78 5.82,5.82 0 0 1 42.94,76.82 Z"
-             class="cls-2"
-             inkscape:connector-curvature="0"
-             style="fill:#ed1c24" />
-          <path
-             id="path14"
-             d="m 61.66,66.21 h 2.73 v 9.9 l 4.49,-5 h 3.48 l -5.36,5.6 5.53,5.77 H 69 l -4.62,-5.11 v 5.11 h -2.72 z"
-             class="cls-2"
-             inkscape:connector-curvature="0"
-             style="fill:#ed1c24" />
-          <path
-             id="path16"
-             d="m 78.59,76.91 a 5.73,5.73 0 0 1 6,-6 5.83,5.83 0 0 1 6.12,6.08 5.56,5.56 0 0 1 -5.64,5.84 4.3,4.3 0 0 1 -3.78,-2 v 6.49 h -2.7 z m 9.4,-0.09 A 3.34,3.34 0 1 0 84.64,80.23 3.23,3.23 0 0 0 88,76.82 Z"
-             class="cls-2"
-             inkscape:connector-curvature="0"
-             style="fill:#ed1c24" />
-          <path
-             id="path18"
-             d="m 96.65,76.82 a 6.1,6.1 0 1 1 6.09,6 5.81,5.81 0 0 1 -6.09,-6 z m 9.41,0 a 3.33,3.33 0 1 0 -3.32,3.41 3.21,3.21 0 0 0 3.32,-3.41 z"
-             class="cls-2"
-             inkscape:connector-curvature="0"
-             style="fill:#ed1c24" />
-          <path
-             id="path20"
-             d="m 115.21,78.13 v -11 h 2.72 v 4 h 5.85 v 2.48 h -5.85 v 4.49 c 0,1.51 0.78,2.1 1.9,2.1 1.12,0 1.91,-0.57 1.91,-2.1 v -0.3 h 2.72 v 0.3 c 0,3.14 -1.88,4.65 -4.63,4.65 -2.75,0 -4.62,-1.48 -4.62,-4.62 z"
-             class="cls-2"
-             inkscape:connector-curvature="0"
-             style="fill:#ed1c24" />
-          <circle
-             id="circle22"
-             r="15.19"
-             cy="46.09"
-             cx="42.720001"
-             class="cls-3"
-             style="fill:#ffffff" />
-          <circle
-             id="circle24"
-             r="15.19"
-             cy="46.09"
-             cx="95.459999"
-             class="cls-3"
-             style="fill:#ffffff" />
-          <circle
-             id="circle26"
-             r="15.19"
-             cy="46.09"
-             cx="68.68"
-             class="cls-3"
-             style="fill:#ffffff" />
-          <text
-             transform="scale(0.99100761,1.009074)"
-             style="font-size:24.09236908px;font-family:Nunito-Regular, Nunito;letter-spacing:0.2em;fill:#333333;stroke-width:0.99968338"
-             y="54.880756"
-             x="36.158607"
-             id="text28"
-             class="cls-4">7</text>
-          <text
-             style="font-size:24.09236908px;font-family:Nunito-Regular, Nunito;letter-spacing:0.2em;fill:#333333;stroke-width:0.99968338"
-             y="54.880756"
-             x="63.159412"
-             id="text30"
-             transform="scale(0.9910076,1.009074)"
-             class="cls-4">7</text>
-          <text
-             style="font-size:24.09236908px;font-family:Nunito-Regular, Nunito;letter-spacing:0.2em;fill:#333333;stroke-width:0.99968338"
-             y="54.880756"
-             x="90.252037"
-             id="text32"
-             transform="scale(0.9910076,1.009074)"
-             class="cls-4">7</text>
-        </g>
-      </g>
-    </g>
+     id="g23">
+    <circle
+       id="circle6"
+       r="59.7"
+       cy="60.2"
+       cx="60.2"
+       class="cls-1" />
+    <text
+       style="font-size:44.20999908px;font-family:Nunito-Regular, Nunito;letter-spacing:0.2em;fill:#212121"
+       y="79.099998"
+       x="47.299999"
+       id="text8"
+       class="cls-2">7</text>
+    <text
+       style="font-size:44.20999908px;font-family:Nunito-Regular, Nunito;letter-spacing:0.2em;fill:#212121"
+       y="79.120003"
+       x="11.93"
+       id="text10"
+       class="cls-3">7</text>
+    <text
+       style="font-size:44.20999908px;font-family:Nunito-Regular, Nunito;letter-spacing:0.2em;fill:#212121"
+       y="79.120003"
+       x="82.669998"
+       id="text12"
+       class="cls-2">7</text>
   </g>
 </svg>
