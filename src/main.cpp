@@ -5805,8 +5805,14 @@ bool static ProcessMessage(CNode* pfrom, std::string strCommand, CDataStream& vR
 // switch the protocol version up once we hit fork height
 int ActiveProtocol()
 {
-    if (chainActive.Height() >= Params().GetConsensus().height_new_client)
-        return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
+    // SPORK_14 
+    if (sporkManager.IsSporkActive(SPORK_14_NEW_PROTOCOL_ENFORCEMENT))
+            return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
+
+    // SPORK_15 
+    //if (sporkManager.IsSporkActive(SPORK_15_NEW_PROTOCOL_ENFORCEMENT_2))
+    //        return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
+
     return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
 }
 

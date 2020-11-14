@@ -144,7 +144,7 @@ am__append_20 = $(SSE42_CXXFLAGS)
 #  wallet/test/wallet_tests.cpp
 
 #am__append_24 = $(LIBBITCOIN_WALLET)
-##am__append_25 = $(ZMQ_LIBS)
+#am__append_25 = $(ZMQ_LIBS)
 #am__append_26 = $(CLEAN_BITCOIN_TEST)
 am__append_27 = qt/jackpot-qt
 am__append_28 = qt/libbitcoinqt.a
@@ -153,7 +153,7 @@ am__append_30 = $(BITCOIN_QT_WALLET_CPP)
 #am__append_31 = $(BITCOIN_MM)
 #am__append_32 = $(BITCOIN_RC)
 am__append_33 = $(LIBBITCOIN_UTIL) $(LIBBITCOIN_WALLET)
-#am__append_34 = $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
+am__append_34 = $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
 am__append_35 = $(CLEAN_QT)
 
 # Copyright (c) 2013-2016 The Bitcoin Core developers
@@ -166,7 +166,7 @@ am__append_35 = $(CLEAN_QT)
 #  qt/test/paymentservertests.cpp
 
 #am__append_40 = $(LIBBITCOIN_UTIL) $(LIBBITCOIN_WALLET)
-##am__append_41 = $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
+#am__append_41 = $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
 #am__append_42 = $(CLEAN_BITCOIN_QT_TEST)
 subdir = src
 SUBDIRS =
@@ -549,9 +549,9 @@ libbitcoin_zmq_a_AR = $(AR) $(ARFLAGS)
 libbitcoin_zmq_a_LIBADD =
 am__libbitcoin_zmq_a_SOURCES_DIST = zmq/zmqabstractnotifier.cpp \
 	zmq/zmqnotificationinterface.cpp zmq/zmqpublishnotifier.cpp
-#am_libbitcoin_zmq_a_OBJECTS = zmq/libbitcoin_zmq_a-zmqabstractnotifier.$(OBJEXT) \
-#	zmq/libbitcoin_zmq_a-zmqnotificationinterface.$(OBJEXT) \
-#	zmq/libbitcoin_zmq_a-zmqpublishnotifier.$(OBJEXT)
+am_libbitcoin_zmq_a_OBJECTS = zmq/libbitcoin_zmq_a-zmqabstractnotifier.$(OBJEXT) \
+	zmq/libbitcoin_zmq_a-zmqnotificationinterface.$(OBJEXT) \
+	zmq/libbitcoin_zmq_a-zmqpublishnotifier.$(OBJEXT)
 libbitcoin_zmq_a_OBJECTS = $(am_libbitcoin_zmq_a_OBJECTS)
 libzerocoin_libbitcoin_zerocoin_a_AR = $(AR) $(ARFLAGS)
 libzerocoin_libbitcoin_zerocoin_a_LIBADD =
@@ -1332,9 +1332,9 @@ am_qt_jackpot_qt_OBJECTS =  \
 	qt/qt_jackpot_qt-pivx.$(OBJEXT) \
 	$(am__objects_23) $(am__objects_25)
 qt_jackpot_qt_OBJECTS = $(am_qt_jackpot_qt_OBJECTS)
-#am__DEPENDENCIES_5 =  \
-#	$(LIBBITCOIN_ZMQ) \
-#	$(am__DEPENDENCIES_1)
+am__DEPENDENCIES_5 =  \
+	$(LIBBITCOIN_ZMQ) \
+	$(am__DEPENDENCIES_1)
 qt_jackpot_qt_DEPENDENCIES = qt/libbitcoinqt.a \
 	$(LIBBITCOIN_SERVER) $(am__append_33) \
 	$(am__DEPENDENCIES_5) $(LIBBITCOIN_CLI) \
@@ -1368,9 +1368,9 @@ am__qt_test_test_pivx_qt_SOURCES_DIST = qt/test/test_main.cpp \
 #	$(am__objects_28)
 qt_test_test_pivx_qt_OBJECTS = $(am_qt_test_test_pivx_qt_OBJECTS) \
 	$(nodist_qt_test_test_pivx_qt_OBJECTS)
-##am__DEPENDENCIES_6 =  \
-##	$(LIBBITCOIN_ZMQ) \
-##	$(am__DEPENDENCIES_1)
+#am__DEPENDENCIES_6 =  \
+#	$(LIBBITCOIN_ZMQ) \
+#	$(am__DEPENDENCIES_1)
 #qt_test_test_pivx_qt_DEPENDENCIES =  \
 #	$(LIBBITCOINQT) $(LIBBITCOIN_SERVER) \
 #	$(am__append_40) $(am__DEPENDENCIES_6) \
@@ -1489,8 +1489,8 @@ am__test_test_pivx_SOURCES_DIST = test/test_pivx.h test/test_pivx.cpp \
 #nodist_test_test_pivx_OBJECTS = $(am__objects_33)
 test_test_pivx_OBJECTS = $(am_test_test_pivx_OBJECTS) \
 	$(nodist_test_test_pivx_OBJECTS)
-##am__DEPENDENCIES_7 =  \
-##	$(am__DEPENDENCIES_1)
+#am__DEPENDENCIES_7 =  \
+#	$(am__DEPENDENCIES_1)
 #test_test_pivx_DEPENDENCIES = $(LIBBITCOIN_SERVER) \
 #	$(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) \
 #	$(LIBBITCOIN_UTIL) $(LIBBITCOIN_CRYPTO) \
@@ -1861,14 +1861,14 @@ am__relativize = \
     dir1=`echo "$$dir1" | sed -e "$$sed_rest"`; \
   done; \
   reldir="$$dir2"
-ACLOCAL = ${SHELL} /home/remapper/777/build-aux/missing aclocal-1.15
+ACLOCAL = ${SHELL} /home/ubuntu/777/build-aux/missing aclocal-1.15
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 0
 AR = ar
 ARFLAGS = cr
-AUTOCONF = ${SHELL} /home/remapper/777/build-aux/missing autoconf
-AUTOHEADER = ${SHELL} /home/remapper/777/build-aux/missing autoheader
-AUTOMAKE = ${SHELL} /home/remapper/777/build-aux/missing automake-1.15
+AUTOCONF = ${SHELL} /home/ubuntu/777/build-aux/missing autoconf
+AUTOHEADER = ${SHELL} /home/ubuntu/777/build-aux/missing autoheader
+AUTOMAKE = ${SHELL} /home/ubuntu/777/build-aux/missing automake-1.15
 AVX2_CXXFLAGS = -mavx -mavx2
 AWK = mawk
 BDB_CFLAGS = 
@@ -1879,10 +1879,10 @@ BITCOIN_DAEMON_NAME = jackpotd
 BITCOIN_GUI_NAME = jackpot-qt
 BITCOIN_TX_NAME = jackpot-tx
 BOOST_CHRONO_LIB = -lboost_chrono-mt
-BOOST_CPPFLAGS = -DBOOST_SP_USE_STD_ATOMIC -DBOOST_AC_USE_STD_ATOMIC -pthread -I/home/remapper/777/depends/x86_64-pc-linux-gnu/share/../include
+BOOST_CPPFLAGS = -DBOOST_SP_USE_STD_ATOMIC -DBOOST_AC_USE_STD_ATOMIC -pthread -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/share/../include
 BOOST_FILESYSTEM_LIB = -lboost_filesystem-mt
-BOOST_LDFLAGS = -L/home/remapper/777/depends/x86_64-pc-linux-gnu/share/../lib
-BOOST_LIBS = -L/home/remapper/777/depends/x86_64-pc-linux-gnu/share/../lib -lboost_system-mt -lboost_filesystem-mt -lboost_program_options-mt -lboost_thread-mt -lboost_chrono-mt
+BOOST_LDFLAGS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/share/../lib
+BOOST_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/share/../lib -lboost_system-mt -lboost_filesystem-mt -lboost_program_options-mt -lboost_thread-mt -lboost_chrono-mt
 BOOST_PROGRAM_OPTIONS_LIB = -lboost_program_options-mt
 BOOST_SYSTEM_LIB = -lboost_system-mt
 BOOST_THREAD_LIB = -lboost_thread-mt
@@ -1892,24 +1892,24 @@ CC = gcc -m64
 CCACHE = 
 CCDEPMODE = depmode=gcc3
 CFLAGS = -pipe -O2 
-CHARTS_CFLAGS = -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtCharts -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtWidgets -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtGui -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtCore
-CHARTS_LIBS = -L/home/remapper/777/depends/x86_64-pc-linux-gnu/lib -L/home/remapper/777/depends/work/build/x86_64-pc-linux-gnu/qt/5.9.7-2f8cd7908ce/qtbase/lib -L/home/remapper/777/depends/x86_64-pc-linux-gnu/lib -lQt5Charts -lQt5Widgets -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5Widgets -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl
+CHARTS_CFLAGS = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtCharts -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtWidgets -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtGui -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtCore
+CHARTS_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -L/home/ubuntu/777/depends/work/build/x86_64-pc-linux-gnu/qt/5.9.7-2e088639266/qtbase/lib -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lQt5Charts -lQt5Widgets -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5Widgets -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl
 CLIENT_VERSION_BUILD = 0
 CLIENT_VERSION_IS_RELEASE = true
 CLIENT_VERSION_MAJOR = 2
 CLIENT_VERSION_MINOR = 0
-CLIENT_VERSION_REVISION = 0
+CLIENT_VERSION_REVISION = 1
 COMPAT_LDFLAGS =  -Wl,--wrap=__divmoddi4 -Wl,--wrap=log2f
 COPYRIGHT_YEAR = 2020
 CPP = gcc -m64 -E
 CPPFILT = /usr/bin/c++filt
-CPPFLAGS = -I/home/remapper/777/depends/x86_64-pc-linux-gnu/share/../include/  -DHAVE_BUILD_INFO -D__STDC_FORMAT_MACROS
-CRYPTO_CFLAGS = -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include
-CRYPTO_LIBS = -L/home/remapper/777/depends/x86_64-pc-linux-gnu/lib -lcrypto -ldl
+CPPFLAGS = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/share/../include/ -fPIC -O3 --param ggc-min-expand=1 --param ggc-min-heapsize=32768 -DHAVE_BUILD_INFO -D__STDC_FORMAT_MACROS
+CRYPTO_CFLAGS = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include
+CRYPTO_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lcrypto -ldl
 CXX = g++ -m64 -std=c++11
 CXXCPP = g++ -m64 -std=c++11 -E
 CXXDEPMODE = depmode=gcc3
-CXXFLAGS = -pipe -O2 
+CXXFLAGS = -pipe -O2 -fPIC -O3 --param ggc-min-expand=1 --param ggc-min-heapsize=32768
 CYGPATH_W = echo
 DEBUG_CPPFLAGS = 
 DEBUG_CXXFLAGS = 
@@ -1924,10 +1924,10 @@ ECHO_N = -n
 ECHO_T = 
 EGREP = /bin/grep -E
 ERROR_CXXFLAGS = 
-EVENT_CFLAGS = -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include
-EVENT_LIBS = -L/home/remapper/777/depends/x86_64-pc-linux-gnu/lib -levent
-EVENT_PTHREADS_CFLAGS = -pthread -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include
-EVENT_PTHREADS_LIBS = -L/home/remapper/777/depends/x86_64-pc-linux-gnu/lib -levent_pthreads -levent
+EVENT_CFLAGS = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include
+EVENT_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -levent
+EVENT_PTHREADS_CFLAGS = -pthread -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include
+EVENT_PTHREADS_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -levent_pthreads -levent
 EXEEXT = 
 EXTENDED_FUNCTIONAL_TESTS = 
 FGREP = /bin/grep -F
@@ -1953,29 +1953,29 @@ INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
 LCOV = 
 LCOV_OPTS = 
 LD = /usr/bin/ld -m elf_x86_64
-LDFLAGS = -L/home/remapper/777/depends/x86_64-pc-linux-gnu/share/../lib -static-libstdc++
+LDFLAGS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/share/../lib -static-libstdc++
 LEVELDB_CPPFLAGS =  $(am__append_14)
 LEVELDB_TARGET_FLAGS = -DOS_LINUX
 LIBLEVELDB =  $(am__append_12)
 LIBMEMENV =  $(am__append_13)
 LIBOBJS = 
-LIBS = -lrt -lcap -lseccomp -lgmp
+LIBS = -lrt  -lgmp
 LIBTOOL = $(SHELL) $(top_builddir)/libtool
 LIBTOOL_APP_LDFLAGS = 
 LIPO = 
 LN_S = ln -s
-LRELEASE = /home/remapper/777/depends/x86_64-pc-linux-gnu/share/../native/bin/lrelease
+LRELEASE = /home/ubuntu/777/depends/x86_64-pc-linux-gnu/share/../native/bin/lrelease
 LTLIBOBJS = 
 LT_SYS_LIBRARY_PATH = 
-LUPDATE = /home/remapper/777/depends/x86_64-pc-linux-gnu/share/../native/bin/lupdate
+LUPDATE = /home/ubuntu/777/depends/x86_64-pc-linux-gnu/share/../native/bin/lupdate
 MAINT = 
-MAKEINFO = ${SHELL} /home/remapper/777/build-aux/missing makeinfo
+MAKEINFO = ${SHELL} /home/ubuntu/777/build-aux/missing makeinfo
 MAKENSIS = 
 MANIFEST_TOOL = :
 MINIUPNPC_CPPFLAGS = 
 MINIUPNPC_LIBS = -lminiupnpc
 MKDIR_P = /bin/mkdir -p
-MOC = /home/remapper/777/depends/x86_64-pc-linux-gnu/share/../native/bin/moc
+MOC = /home/ubuntu/777/depends/x86_64-pc-linux-gnu/share/../native/bin/moc
 MOC_DEFS = -DHAVE_CONFIG_H -I$(srcdir)
 NM = nm
 NMEDIT = 
@@ -1991,70 +1991,70 @@ OTOOL64 =
 PACKAGE = jackpot
 PACKAGE_BUGREPORT = https://github.com/JackpotOfficial/Jackpot/issues
 PACKAGE_NAME = Jackpot
-PACKAGE_STRING = Jackpot 2.0.0
+PACKAGE_STRING = Jackpot 2.0.1
 PACKAGE_TARNAME = jackpot
 PACKAGE_URL = https://www.jackpotnetwork.io/
-PACKAGE_VERSION = 2.0.0
+PACKAGE_VERSION = 2.0.1
 PATH_SEPARATOR = :
 PIC_FLAGS = -fPIC
 PIE_FLAGS = -fPIE
 PKG_CONFIG = /usr/bin/pkg-config --static
 PKG_CONFIG_LIBDIR = 
-PKG_CONFIG_PATH = /home/remapper/777/depends/x86_64-pc-linux-gnu/share/../share/pkgconfig:/home/remapper/777/depends/x86_64-pc-linux-gnu/share/../lib/pkgconfig
+PKG_CONFIG_PATH = /home/ubuntu/777/depends/x86_64-pc-linux-gnu/share/../share/pkgconfig:/home/ubuntu/777/depends/x86_64-pc-linux-gnu/share/../lib/pkgconfig
 PORT = 
-PROTOBUF_CFLAGS = -pthread -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include
-PROTOBUF_LIBS = -L/home/remapper/777/depends/x86_64-pc-linux-gnu/lib -lprotobuf -pthread -lpthread -lz
-PROTOC = /home/remapper/777/depends/x86_64-pc-linux-gnu/share/../native/bin/protoc
+PROTOBUF_CFLAGS = -pthread -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include
+PROTOBUF_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lprotobuf -pthread -lpthread -lz
+PROTOC = /home/ubuntu/777/depends/x86_64-pc-linux-gnu/share/../native/bin/protoc
 PTHREAD_CC = gcc -m64
 PTHREAD_CFLAGS = -pthread
 PTHREAD_LIBS = 
 PYTHON = /usr/bin/python3.6
-PYTHONPATH = /home/remapper/777/depends/x86_64-pc-linux-gnu/share/../native/lib/python3/dist-packages:
-QR_CFLAGS = -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include
-QR_LIBS = -L/home/remapper/777/depends/x86_64-pc-linux-gnu/lib -lqrencode -lpthread
-QT5_CFLAGS = -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtNetwork -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtWidgets -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtGui -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtCore
-QT5_LIBS = -L/home/remapper/777/depends/x86_64-pc-linux-gnu/lib -lQt5Network -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lz -lssl -lcrypto -lQt5Widgets -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl
-QTACCESSIBILITY_CFLAGS = -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtAccessibilitySupport -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtGui -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtCore
-QTACCESSIBILITY_LIBS = -L/home/remapper/777/depends/x86_64-pc-linux-gnu/lib -lQt5AccessibilitySupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl
+PYTHONPATH = /home/ubuntu/777/depends/x86_64-pc-linux-gnu/share/../native/lib/python3/dist-packages:
+QR_CFLAGS = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include
+QR_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lqrencode -lpthread
+QT5_CFLAGS = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtNetwork -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtWidgets -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtGui -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtCore
+QT5_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lQt5Network -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lz -lssl -lcrypto -lQt5Widgets -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl
+QTACCESSIBILITY_CFLAGS = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtAccessibilitySupport -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtGui -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtCore
+QTACCESSIBILITY_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lQt5AccessibilitySupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl
 QTCGL_CFLAGS = 
 QTCGL_LIBS = 
 QTCLIPBOARD_CFLAGS = 
 QTCLIPBOARD_LIBS = 
-QTDEVICEDISCOVERY_CFLAGS = -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtDeviceDiscoverySupport -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtCore
-QTDEVICEDISCOVERY_LIBS = -L/home/remapper/777/depends/x86_64-pc-linux-gnu/lib -lQt5DeviceDiscoverySupport -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl
-QTEVENTDISPATCHER_CFLAGS = -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtEventDispatcherSupport -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtGui -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtCore
-QTEVENTDISPATCHER_LIBS = -L/home/remapper/777/depends/x86_64-pc-linux-gnu/lib -lQt5EventDispatcherSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl
-QTFB_CFLAGS = -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtFbSupport -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtGui -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtCore
-QTFB_LIBS = -L/home/remapper/777/depends/x86_64-pc-linux-gnu/lib -lQt5FbSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl
-QTFONTDATABASE_CFLAGS = -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtFontDatabaseSupport -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtGui -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtCore
-QTFONTDATABASE_LIBS = -L/home/remapper/777/depends/x86_64-pc-linux-gnu/lib -L//home/remapper/777/depends/x86_64-pc-linux-gnu/lib -L/home/remapper/777/depends/x86_64-pc-linux-gnu/lib -lQt5FontDatabaseSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lfontconfig -lfreetype -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl
+QTDEVICEDISCOVERY_CFLAGS = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtDeviceDiscoverySupport -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtCore
+QTDEVICEDISCOVERY_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lQt5DeviceDiscoverySupport -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl
+QTEVENTDISPATCHER_CFLAGS = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtEventDispatcherSupport -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtGui -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtCore
+QTEVENTDISPATCHER_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lQt5EventDispatcherSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl
+QTFB_CFLAGS = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtFbSupport -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtGui -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtCore
+QTFB_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lQt5FbSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl
+QTFONTDATABASE_CFLAGS = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtFontDatabaseSupport -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtGui -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtCore
+QTFONTDATABASE_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -L//home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lQt5FontDatabaseSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lfontconfig -lfreetype -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl
 QTGRAPHICS_CFLAGS = 
 QTGRAPHICS_LIBS = 
 QTPLATFORM_CFLAGS = 
 QTPLATFORM_LIBS = 
-QTTHEME_CFLAGS = -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtThemeSupport -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtGui -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtCore
-QTTHEME_LIBS = -L/home/remapper/777/depends/x86_64-pc-linux-gnu/lib -lQt5ThemeSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5DBus -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl
-QTXCBQPA_CFLAGS = -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtXcbQpa -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtServiceSupport -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtThemeSupport -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtEventDispatcherSupport -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtFontDatabaseSupport -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtGui -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtCore
-QTXCBQPA_LIBS = -L/home/remapper/777/depends/x86_64-pc-linux-gnu/lib -L//home/remapper/777/depends/x86_64-pc-linux-gnu/lib -L/home/remapper/777/depends/x86_64-pc-linux-gnu/lib -L//home/remapper/777/depends/x86_64-pc-linux-gnu/lib -L/home/remapper/777/depends/x86_64-pc-linux-gnu/lib -lQt5XcbQpa -lQt5ServiceSupport -lQt5ThemeSupport -lQt5DBus -lQt5EventDispatcherSupport -lQt5FontDatabaseSupport -lfontconfig -lfreetype -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -lpthread -lX11-xcb -lX11 -lxcb-static -lxcb -ldl -lQt5ServiceSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5ThemeSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5DBus -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl -lQt5EventDispatcherSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5FontDatabaseSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lfontconfig -lfreetype -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl
-QT_CONCURRENT_CFLAGS = -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtConcurrent -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtCore
-QT_CONCURRENT_LIBS = -L/home/remapper/777/depends/x86_64-pc-linux-gnu/lib -lQt5Concurrent -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl
-QT_DBUS_CFLAGS = -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtDBus -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtCore
-QT_DBUS_INCLUDES = -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtDBus -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtCore
-QT_DBUS_LIBS = -L/home/remapper/777/depends/x86_64-pc-linux-gnu/lib -lQt5DBus -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl
-QT_INCLUDES = -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtNetwork -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtWidgets -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtGui -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtCore -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtConcurrent -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtCore
+QTTHEME_CFLAGS = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtThemeSupport -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtGui -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtCore
+QTTHEME_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lQt5ThemeSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5DBus -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl
+QTXCBQPA_CFLAGS = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtXcbQpa -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtServiceSupport -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtThemeSupport -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtEventDispatcherSupport -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtFontDatabaseSupport -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtGui -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtCore
+QTXCBQPA_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -L//home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -L//home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lQt5XcbQpa -lQt5ServiceSupport -lQt5ThemeSupport -lQt5DBus -lQt5EventDispatcherSupport -lQt5FontDatabaseSupport -lfontconfig -lfreetype -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -lpthread -lX11-xcb -lX11 -lxcb-static -lxcb -ldl -lQt5ServiceSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5ThemeSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5DBus -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl -lQt5EventDispatcherSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5FontDatabaseSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lfontconfig -lfreetype -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl
+QT_CONCURRENT_CFLAGS = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtConcurrent -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtCore
+QT_CONCURRENT_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lQt5Concurrent -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl
+QT_DBUS_CFLAGS = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtDBus -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtCore
+QT_DBUS_INCLUDES = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtDBus -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtCore
+QT_DBUS_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lQt5DBus -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl
+QT_INCLUDES = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtNetwork -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtWidgets -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtGui -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtCore -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtConcurrent -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtCore
 QT_LDFLAGS = 
-QT_LIBS = -lqxcb -lxcb-static -lqsvgicon -lqgif -lqsvg -lqminimal -L/home/remapper/777/depends/x86_64-pc-linux-gnu/lib -L//home/remapper/777/depends/x86_64-pc-linux-gnu/lib -L/home/remapper/777/depends/x86_64-pc-linux-gnu/lib -L//home/remapper/777/depends/x86_64-pc-linux-gnu/lib -L/home/remapper/777/depends/x86_64-pc-linux-gnu/lib -lQt5XcbQpa -lQt5ServiceSupport -lQt5ThemeSupport -lQt5DBus -lQt5EventDispatcherSupport -lQt5FontDatabaseSupport -lfontconfig -lfreetype -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -lpthread -lX11-xcb -lX11 -lxcb-static -lxcb -ldl -lQt5ServiceSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5ThemeSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5DBus -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl -lQt5EventDispatcherSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5FontDatabaseSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lfontconfig -lfreetype -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl -L/home/remapper/777/depends/x86_64-pc-linux-gnu/lib -lX11-xcb -lX11 -lpthread -lxcb -lXau -lQt5FbSupport -lQt5AccessibilitySupport -lQt5DeviceDiscoverySupport -lQt5ThemeSupport -lQt5EventDispatcherSupport -lQt5FontDatabaseSupport -L/home/remapper/777/depends/x86_64-pc-linux-gnu/lib -lQt5Network -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lz -lssl -lcrypto -lQt5Widgets -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl -L/home/remapper/777/depends/x86_64-pc-linux-gnu/lib -L/home/remapper/777/depends/work/build/x86_64-pc-linux-gnu/qt/5.9.7-2f8cd7908ce/qtbase/lib -L/home/remapper/777/depends/x86_64-pc-linux-gnu/lib -lQt5Svg -lQt5Widgets -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lz -lQt5Widgets -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl -L/home/remapper/777/depends/x86_64-pc-linux-gnu/lib -lQt5Concurrent -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl -L/home/remapper/777/depends/x86_64-pc-linux-gnu/share/../plugins/platforms -L/home/remapper/777/depends/x86_64-pc-linux-gnu/share/../plugins/imageformats -L/home/remapper/777/depends/x86_64-pc-linux-gnu/share/../plugins/iconengines
+QT_LIBS = -lqxcb -lxcb-static -lqsvgicon -lqgif -lqsvg -lqminimal -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -L//home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -L//home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lQt5XcbQpa -lQt5ServiceSupport -lQt5ThemeSupport -lQt5DBus -lQt5EventDispatcherSupport -lQt5FontDatabaseSupport -lfontconfig -lfreetype -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -lpthread -lX11-xcb -lX11 -lxcb-static -lxcb -ldl -lQt5ServiceSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5ThemeSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5DBus -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl -lQt5EventDispatcherSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5FontDatabaseSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lfontconfig -lfreetype -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lX11-xcb -lX11 -lpthread -lxcb -lXau -lQt5FbSupport -lQt5AccessibilitySupport -lQt5DeviceDiscoverySupport -lQt5ThemeSupport -lQt5EventDispatcherSupport -lQt5FontDatabaseSupport -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lQt5Network -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lz -lssl -lcrypto -lQt5Widgets -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -L/home/ubuntu/777/depends/work/build/x86_64-pc-linux-gnu/qt/5.9.7-2e088639266/qtbase/lib -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lQt5Svg -lQt5Widgets -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lz -lQt5Widgets -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lQt5Concurrent -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/share/../plugins/platforms -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/share/../plugins/imageformats -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/share/../plugins/iconengines
 QT_PIE_FLAGS = -fPIE
 QT_SELECT = qt5
-QT_SVG_CFLAGS = -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtSvg -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtWidgets -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtGui -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtCore
-QT_SVG_INCLUDES = -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtSvg -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtWidgets -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtGui -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtCore
-QT_SVG_LIBS = -L/home/remapper/777/depends/x86_64-pc-linux-gnu/lib -L/home/remapper/777/depends/work/build/x86_64-pc-linux-gnu/qt/5.9.7-2f8cd7908ce/qtbase/lib -L/home/remapper/777/depends/x86_64-pc-linux-gnu/lib -lQt5Svg -lQt5Widgets -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lz -lQt5Widgets -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl
-QT_TEST_CFLAGS = -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtTest -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtCore
-QT_TEST_INCLUDES = -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtTest -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/QtCore
-QT_TEST_LIBS = -L/home/remapper/777/depends/x86_64-pc-linux-gnu/lib -lQt5Test -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl
-QT_TRANSLATION_DIR = /home/remapper/777/depends/x86_64-pc-linux-gnu/share/../translations
+QT_SVG_CFLAGS = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtSvg -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtWidgets -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtGui -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtCore
+QT_SVG_INCLUDES = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtSvg -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtWidgets -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtGui -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtCore
+QT_SVG_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -L/home/ubuntu/777/depends/work/build/x86_64-pc-linux-gnu/qt/5.9.7-2e088639266/qtbase/lib -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lQt5Svg -lQt5Widgets -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lz -lQt5Widgets -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl
+QT_TEST_CFLAGS = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtTest -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtCore
+QT_TEST_INCLUDES = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtTest -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtCore
+QT_TEST_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lQt5Test -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl
+QT_TRANSLATION_DIR = /home/ubuntu/777/depends/x86_64-pc-linux-gnu/share/../translations
 RANLIB = ranlib
-RCC = /home/remapper/777/depends/x86_64-pc-linux-gnu/share/../native/bin/rcc
+RCC = /home/ubuntu/777/depends/x86_64-pc-linux-gnu/share/../native/bin/rcc
 READELF = /usr/bin/readelf
 RELDFLAGS = 
 RSVG_CONVERT = 
@@ -2066,31 +2066,31 @@ SHANI_CXXFLAGS = -msse4 -msha
 SHELL = /bin/bash
 SSE41_CXXFLAGS = -msse4.1
 SSE42_CXXFLAGS = -msse4.2
-SSL_CFLAGS = -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include
-SSL_LIBS = -L/home/remapper/777/depends/x86_64-pc-linux-gnu/lib -lssl -lcrypto -ldl
+SSL_CFLAGS = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include
+SSL_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lssl -lcrypto -ldl
 STRIP = /usr/bin/strip
 TESTDEFS = 
 TIFFCP = 
-UIC = /home/remapper/777/depends/x86_64-pc-linux-gnu/share/../native/bin/uic
+UIC = /home/ubuntu/777/depends/x86_64-pc-linux-gnu/share/../native/bin/uic
 UNIVALUE_CFLAGS = -I$(srcdir)/univalue/include
 UNIVALUE_LIBS = univalue/libunivalue.la
 USE_NUM_GMP = 
 USE_NUM_OPENSSL = 
 USE_QTCHARTS = 
 USE_UPNP = 
-VERSION = 2.0.0
+VERSION = 2.0.1
 WARN_CXXFLAGS = 
 WINDOWS_BITS = 
 WINDRES = 
-X11XCB_CFLAGS = -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include/xcb-shared -I/home/remapper/777/depends/x86_64-pc-linux-gnu/include
-X11XCB_LIBS = -L/home/remapper/777/depends/x86_64-pc-linux-gnu/lib -lX11-xcb -lX11 -lpthread -lxcb -lXau
+X11XCB_CFLAGS = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/xcb-shared -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include
+X11XCB_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lX11-xcb -lX11 -lpthread -lxcb -lXau
 XGETTEXT = /usr/bin/xgettext
-ZMQ_CFLAGS = 
-ZMQ_LIBS = 
-abs_builddir = /home/remapper/777/src
-abs_srcdir = /home/remapper/777/src
-abs_top_builddir = /home/remapper/777
-abs_top_srcdir = /home/remapper/777
+ZMQ_CFLAGS = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include
+ZMQ_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lzmq -lpthread -lrt
+abs_builddir = /home/ubuntu/777/src
+abs_srcdir = /home/ubuntu/777/src
+abs_top_builddir = /home/ubuntu/777
+abs_top_srcdir = /home/ubuntu/777
 ac_ct_AR = 
 ac_ct_CC = 
 ac_ct_CXX = 
@@ -2122,7 +2122,7 @@ host_vendor = pc
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/remapper/777/build-aux/install-sh
+install_sh = ${SHELL} /home/ubuntu/777/build-aux/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -2131,7 +2131,7 @@ mandir = ${datarootdir}/man
 mkdir_p = $(MKDIR_P)
 oldincludedir = /usr/include
 pdfdir = ${docdir}
-prefix = /home/remapper/777/depends/x86_64-pc-linux-gnu
+prefix = /home/ubuntu/777/depends/x86_64-pc-linux-gnu
 program_transform_name = s,x,x,
 psdir = ${docdir}
 runstatedir = ${localstatedir}/run
@@ -2171,7 +2171,7 @@ LIBBITCOIN_CRYPTO = crypto/libbitcoin_crypto.a
 LIBBITCOIN_ZEROCOIN = libzerocoin/libbitcoin_zerocoin.a
 LIBBITCOINQT = qt/libbitcoinqt.a
 LIBSECP256K1 = secp256k1/libsecp256k1.la
-#LIBBITCOIN_ZMQ = libbitcoin_zmq.a
+LIBBITCOIN_ZMQ = libbitcoin_zmq.a
 #LIBBITCOINCONSENSUS = libbitcoinconsensus.la
 LIBBITCOIN_WALLET = libbitcoin_wallet.a
 lib_LTLIBRARIES = $(LIBBITCOINCONSENSUS)
@@ -2348,12 +2348,12 @@ libbitcoin_server_a_SOURCES = \
   zpivchain.cpp \
   $(BITCOIN_CORE_H)
 
-#libbitcoin_zmq_a_CPPFLAGS = $(BITCOIN_INCLUDES) $(ZMQ_CFLAGS)
-#libbitcoin_zmq_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-#libbitcoin_zmq_a_SOURCES = \
-#  zmq/zmqabstractnotifier.cpp \
-#  zmq/zmqnotificationinterface.cpp \
-#  zmq/zmqpublishnotifier.cpp
+libbitcoin_zmq_a_CPPFLAGS = $(BITCOIN_INCLUDES) $(ZMQ_CFLAGS)
+libbitcoin_zmq_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libbitcoin_zmq_a_SOURCES = \
+  zmq/zmqabstractnotifier.cpp \
+  zmq/zmqnotificationinterface.cpp \
+  zmq/zmqpublishnotifier.cpp
 
 
 # wallet: shared between jackpotd and jackpot-qt, but only linked

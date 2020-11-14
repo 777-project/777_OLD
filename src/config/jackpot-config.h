@@ -21,7 +21,7 @@
 #define CLIENT_VERSION_MINOR 0
 
 /* Build revision */
-#define CLIENT_VERSION_REVISION 0
+#define CLIENT_VERSION_REVISION 1
 
 /* Version is release */
 #define COPYRIGHT_YEAR 2020
@@ -39,7 +39,7 @@
 #define ENABLE_WALLET 1
 
 /* Define to 1 to enable ZMQ functions */
-#define ENABLE_ZMQ 0
+#define ENABLE_ZMQ 1
 
 /* parameter and return value type for __fdelt_chk */
 #define FDELT_TYPE long int
@@ -352,7 +352,7 @@
 #define PACKAGE_NAME "Jackpot"
 
 /* Define to the full name and version of this package. */
-#define PACKAGE_STRING "Jackpot 2.0.0"
+#define PACKAGE_STRING "Jackpot 2.0.1"
 
 /* Define to the one symbol short name of this package. */
 #define PACKAGE_TARNAME "jackpot"
@@ -361,7 +361,7 @@
 #define PACKAGE_URL "https://www.jackpotnetwork.io/"
 
 /* Define to the version of this package. */
-#define PACKAGE_VERSION "2.0.0"
+#define PACKAGE_VERSION "2.0.1"
 
 /* Define to necessary symbol if this constant uses a non-standard name on
    your system. */
