@@ -105,7 +105,7 @@ NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = x86_64-pc-linux-gnu
-host_triplet = x86_64-pc-linux-gnu
+host_triplet = x86_64-w64-mingw32
 bin_PROGRAMS = $(am__EXEEXT_1) $(am__EXEEXT_2) $(am__EXEEXT_3) \
 	$(am__EXEEXT_4) $(am__EXEEXT_5)
 noinst_PROGRAMS =
@@ -114,12 +114,12 @@ am__append_1 = jackpotd
 am__append_2 = jackpot-cli jackpot-tx
 am__append_3 = libzerocoin/bignum_gmp.cpp
 #am__append_4 = libzerocoin/bignum_openssl.cpp
-am__append_5 = compat/glibc_compat.cpp
-am__append_6 = $(COMPAT_LDFLAGS)
-#am__append_7 = jackpotd-res.rc
-#am__append_8 = jackpot-cli-res.rc
-#am__append_9 = jackpot-tx-res.rc
-#am__append_10 = compat/glibc_compat.cpp
+#am__append_5 = compat/glibc_compat.cpp
+#am__append_6 = $(COMPAT_LDFLAGS)
+am__append_7 = jackpotd-res.rc
+am__append_8 = jackpot-cli-res.rc
+am__append_9 = jackpot-tx-res.rc
+##am__append_10 = compat/glibc_compat.cpp
 am__append_11 = $(LIBLEVELDB_INT) \
 	$(LIBMEMENV_INT) \
 	$(LIBLEVELDB_SSE42_INT)
@@ -127,11 +127,11 @@ am__append_12 = $(LIBLEVELDB_INT)
 am__append_13 = $(LIBMEMENV_INT)
 am__append_14 = -I$(srcdir)/leveldb/include \
 	-I$(srcdir)/leveldb/helpers/memenv
-#am__append_15 = -DLEVELDB_PLATFORM_WINDOWS -DWINVER=0x0500 -D__USE_MINGW_ANSI_STDIO=1
-am__append_16 = -DLEVELDB_PLATFORM_POSIX
-#am__append_17 = leveldb/util/env_win.cc \
-#	leveldb/port/port_win.cc
-am__append_18 = leveldb/port/port_posix.cc
+am__append_15 = -DLEVELDB_PLATFORM_WINDOWS -DWINVER=0x0500 -D__USE_MINGW_ANSI_STDIO=1
+#am__append_16 = -DLEVELDB_PLATFORM_POSIX
+am__append_17 = leveldb/util/env_win.cc \
+	leveldb/port/port_win.cc
+#am__append_18 = leveldb/port/port_posix.cc
 am__append_19 = -DLEVELDB_PLATFORM_POSIX_SSE
 am__append_20 = $(SSE42_CXXFLAGS)
 #am__append_21 = test/test_pivx
@@ -148,10 +148,10 @@ am__append_20 = $(SSE42_CXXFLAGS)
 #am__append_26 = $(CLEAN_BITCOIN_TEST)
 am__append_27 = qt/jackpot-qt
 am__append_28 = qt/libbitcoinqt.a
-#am__append_29 = $(BITCOIN_QT_WINDOWS_CPP)
+am__append_29 = $(BITCOIN_QT_WINDOWS_CPP)
 am__append_30 = $(BITCOIN_QT_WALLET_CPP)
 #am__append_31 = $(BITCOIN_MM)
-#am__append_32 = $(BITCOIN_RC)
+am__append_32 = $(BITCOIN_RC)
 am__append_33 = $(LIBBITCOIN_UTIL) $(LIBBITCOIN_WALLET)
 am__append_34 = $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
 am__append_35 = $(CLEAN_QT)
@@ -308,9 +308,9 @@ am__leveldb_libleveldb_a_SOURCES_DIST = leveldb/port/atomic_pointer.h \
 	leveldb/util/options.cc leveldb/util/status.cc \
 	leveldb/util/env_win.cc leveldb/port/port_win.cc \
 	leveldb/port/port_posix.cc
-#am__objects_1 = leveldb/util/leveldb_libleveldb_a-env_win.$(OBJEXT) \
-#	leveldb/port/leveldb_libleveldb_a-port_win.$(OBJEXT)
-am__objects_2 = leveldb/port/leveldb_libleveldb_a-port_posix.$(OBJEXT)
+am__objects_1 = leveldb/util/leveldb_libleveldb_a-env_win.$(OBJEXT) \
+	leveldb/port/leveldb_libleveldb_a-port_win.$(OBJEXT)
+#am__objects_2 = leveldb/port/leveldb_libleveldb_a-port_posix.$(OBJEXT)
 am_leveldb_libleveldb_a_OBJECTS = leveldb/db/leveldb_libleveldb_a-builder.$(OBJEXT) \
 	leveldb/db/leveldb_libleveldb_a-c.$(OBJEXT) \
 	leveldb/db/leveldb_libleveldb_a-dbformat.$(OBJEXT) \
@@ -485,7 +485,7 @@ am__libbitcoin_util_a_SOURCES_DIST = allocators.cpp \
 	zpiv/zpos.h zmq/zmqabstractnotifier.h zmq/zmqconfig.h \
 	zmq/zmqnotificationinterface.h zmq/zmqpublishnotifier.h \
 	compat/glibc_compat.cpp
-am__objects_4 = compat/libbitcoin_util_a-glibc_compat.$(OBJEXT)
+#am__objects_4 = compat/libbitcoin_util_a-glibc_compat.$(OBJEXT)
 am_libbitcoin_util_a_OBJECTS = libbitcoin_util_a-allocators.$(OBJEXT) \
 	libbitcoin_util_a-chainparamsbase.$(OBJEXT) \
 	libbitcoin_util_a-clientversion.$(OBJEXT) \
@@ -1014,7 +1014,7 @@ am__objects_7 =  \
 	qt/qt_libbitcoinqt_a-trafficgraphwidget.$(OBJEXT) \
 	qt/qt_libbitcoinqt_a-utilitydialog.$(OBJEXT)
 am__objects_8 = qt/qt_libbitcoinqt_a-winshutdownmonitor.$(OBJEXT)
-#am__objects_9 = $(am__objects_8)
+am__objects_9 = $(am__objects_8)
 am__objects_10 = qt/qt_libbitcoinqt_a-addressbookpage.$(OBJEXT) \
 	qt/qt_libbitcoinqt_a-addresstablemodel.$(OBJEXT) \
 	qt/qt_libbitcoinqt_a-askpassphrasedialog.$(OBJEXT) \
@@ -1238,7 +1238,7 @@ am__libbitcoinconsensus_la_SOURCES_DIST = allocators.cpp \
 	script/script.cpp script/interpreter.cpp \
 	script/bitcoinconsensus.cpp uint256.cpp utilstrencodings.cpp \
 	compat/glibc_compat.cpp
-#am__objects_18 = compat/libbitcoinconsensus_la-glibc_compat.lo
+##am__objects_18 = compat/libbitcoinconsensus_la-glibc_compat.lo
 #am_libbitcoinconsensus_la_OBJECTS =  \
 #	libbitcoinconsensus_la-allocators.lo \
 #	primitives/libbitcoinconsensus_la-transaction.lo \
@@ -1275,7 +1275,7 @@ am__EXEEXT_4 = qt/jackpot-qt$(EXEEXT)
 #am__EXEEXT_5 = qt/test/test_pivx-qt$(EXEEXT)
 PROGRAMS = $(bin_PROGRAMS) $(noinst_PROGRAMS)
 am__jackpot_cli_SOURCES_DIST = jackpot-cli.cpp jackpot-cli-res.rc
-#am__objects_19 = jackpot-cli-res.$(OBJEXT)
+am__objects_19 = jackpot-cli-res.$(OBJEXT)
 am_jackpot_cli_OBJECTS = jackpot_cli-jackpot-cli.$(OBJEXT) \
 	$(am__objects_19)
 jackpot_cli_OBJECTS = $(am_jackpot_cli_OBJECTS)
@@ -1290,7 +1290,7 @@ jackpot_cli_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(jackpot_cli_CXXFLAGS) \
 	$(CXXFLAGS) $(jackpot_cli_LDFLAGS) $(LDFLAGS) -o $@
 am__jackpot_tx_SOURCES_DIST = jackpot-tx.cpp jackpot-tx-res.rc
-#am__objects_20 = jackpot-tx-res.$(OBJEXT)
+am__objects_20 = jackpot-tx-res.$(OBJEXT)
 am_jackpot_tx_OBJECTS = jackpot_tx-jackpot-tx.$(OBJEXT) \
 	$(am__objects_20)
 jackpot_tx_OBJECTS = $(am_jackpot_tx_OBJECTS)
@@ -1301,7 +1301,7 @@ jackpot_tx_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(jackpot_tx_CXXFLAGS) \
 	$(CXXFLAGS) $(jackpot_tx_LDFLAGS) $(LDFLAGS) -o $@
 am__jackpotd_SOURCES_DIST = jackpotd.cpp jackpotd-res.rc
-#am__objects_21 = jackpotd-res.$(OBJEXT)
+am__objects_21 = jackpotd-res.$(OBJEXT)
 am_jackpotd_OBJECTS = jackpotd-jackpotd.$(OBJEXT) $(am__objects_21)
 jackpotd_OBJECTS = $(am_jackpotd_OBJECTS)
 am__DEPENDENCIES_3 = $(am__append_12)
@@ -1326,8 +1326,8 @@ am__objects_22 =  \
 #am__objects_23 =  \
 #	$(am__objects_22)
 am__objects_24 = qt/res/pivx-qt-res.$(OBJEXT)
-#am__objects_25 =  \
-#	$(am__objects_24)
+am__objects_25 =  \
+	$(am__objects_24)
 am_qt_jackpot_qt_OBJECTS =  \
 	qt/qt_jackpot_qt-pivx.$(OBJEXT) \
 	$(am__objects_23) $(am__objects_25)
@@ -1808,7 +1808,7 @@ am__set_TESTS_bases = \
   bases=`echo $$bases`
 RECHECK_LOGS = $(TEST_LOGS)
 TEST_SUITE_LOG = test-suite.log
-TEST_EXTENSIONS =  .test
+TEST_EXTENSIONS = .exe .test
 LOG_DRIVER = $(SHELL) $(top_srcdir)/build-aux/test-driver
 LOG_COMPILE = $(LOG_COMPILER) $(AM_LOG_FLAGS) $(LOG_FLAGS)
 am__set_b = \
@@ -1822,7 +1822,7 @@ am__set_b = \
       b='$*';; \
   esac
 am__test_logs1 = $(TESTS:=.log)
-am__test_logs2 = $(am__test_logs1:.log=.log)
+am__test_logs2 = $(am__test_logs1:.exe.log=.log)
 TEST_LOGS = $(am__test_logs2:.test.log=.log)
 TEST_LOG_DRIVER = $(SHELL) $(top_srcdir)/build-aux/test-driver
 TEST_LOG_COMPILE = $(TEST_LOG_COMPILER) $(AM_TEST_LOG_FLAGS) \
@@ -1864,7 +1864,7 @@ am__relativize = \
 ACLOCAL = ${SHELL} /home/ubuntu/777/build-aux/missing aclocal-1.15
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 0
-AR = ar
+AR = /usr/bin/x86_64-w64-mingw32-ar
 ARFLAGS = cr
 AUTOCONF = ${SHELL} /home/ubuntu/777/build-aux/missing autoconf
 AUTOHEADER = ${SHELL} /home/ubuntu/777/build-aux/missing autoheader
@@ -1878,44 +1878,44 @@ BITCOIN_CLI_NAME = jackpot-cli
 BITCOIN_DAEMON_NAME = jackpotd
 BITCOIN_GUI_NAME = jackpot-qt
 BITCOIN_TX_NAME = jackpot-tx
-BOOST_CHRONO_LIB = -lboost_chrono-mt
-BOOST_CPPFLAGS = -DBOOST_SP_USE_STD_ATOMIC -DBOOST_AC_USE_STD_ATOMIC -pthread -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/share/../include
-BOOST_FILESYSTEM_LIB = -lboost_filesystem-mt
-BOOST_LDFLAGS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/share/../lib
-BOOST_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/share/../lib -lboost_system-mt -lboost_filesystem-mt -lboost_program_options-mt -lboost_thread-mt -lboost_chrono-mt
-BOOST_PROGRAM_OPTIONS_LIB = -lboost_program_options-mt
-BOOST_SYSTEM_LIB = -lboost_system-mt
-BOOST_THREAD_LIB = -lboost_thread-mt
+BOOST_CHRONO_LIB = -lboost_chrono-mt-s
+BOOST_CPPFLAGS = -DBOOST_SP_USE_STD_ATOMIC -DBOOST_AC_USE_STD_ATOMIC -mthreads -I/home/ubuntu/777/depends/x86_64-w64-mingw32/share/../include
+BOOST_FILESYSTEM_LIB = -lboost_filesystem-mt-s
+BOOST_LDFLAGS = -L/home/ubuntu/777/depends/x86_64-w64-mingw32/share/../lib
+BOOST_LIBS = -L/home/ubuntu/777/depends/x86_64-w64-mingw32/share/../lib -lboost_system-mt-s -lboost_filesystem-mt-s -lboost_program_options-mt-s -lboost_thread_win32-mt-s -lboost_chrono-mt-s
+BOOST_PROGRAM_OPTIONS_LIB = -lboost_program_options-mt-s
+BOOST_SYSTEM_LIB = -lboost_system-mt-s
+BOOST_THREAD_LIB = -lboost_thread_win32-mt-s
 BOOST_UNIT_TEST_FRAMEWORK_LIB = 
 BREW = 
-CC = gcc -m64
+CC = x86_64-w64-mingw32-gcc
 CCACHE = 
 CCDEPMODE = depmode=gcc3
-CFLAGS = -pipe -O2 
-CHARTS_CFLAGS = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtCharts -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtWidgets -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtGui -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtCore
-CHARTS_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -L/home/ubuntu/777/depends/work/build/x86_64-pc-linux-gnu/qt/5.9.7-2e088639266/qtbase/lib -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lQt5Charts -lQt5Widgets -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5Widgets -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl
+CFLAGS = -pipe -O2 -O3
+CHARTS_CFLAGS = 
+CHARTS_LIBS = -lQt5Charts
 CLIENT_VERSION_BUILD = 1
 CLIENT_VERSION_IS_RELEASE = true
 CLIENT_VERSION_MAJOR = 2
 CLIENT_VERSION_MINOR = 0
 CLIENT_VERSION_REVISION = 1
-COMPAT_LDFLAGS =  -Wl,--wrap=__divmoddi4 -Wl,--wrap=log2f
+COMPAT_LDFLAGS = 
 COPYRIGHT_YEAR = 2020
-CPP = gcc -m64 -E
-CPPFILT = /usr/bin/c++filt
-CPPFLAGS = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/share/../include/ -fPIC -O3 --param ggc-min-expand=1 --param ggc-min-heapsize=32768 -DHAVE_BUILD_INFO -D__STDC_FORMAT_MACROS
-CRYPTO_CFLAGS = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include
-CRYPTO_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lcrypto -ldl
-CXX = g++ -m64 -std=c++11
-CXXCPP = g++ -m64 -std=c++11 -E
+CPP = x86_64-w64-mingw32-gcc -E
+CPPFILT = /usr/bin/x86_64-w64-mingw32-c++filt
+CPPFLAGS = -I/home/ubuntu/777/depends/x86_64-w64-mingw32/share/../include/  -DHAVE_BUILD_INFO -D__STDC_FORMAT_MACROS -D_MT -DWIN32 -D_WINDOWS -DBOOST_THREAD_USE_LIB -D_FILE_OFFSET_BITS=64
+CRYPTO_CFLAGS = 
+CRYPTO_LIBS = -lcrypto
+CXX = x86_64-w64-mingw32-g++ -std=c++11
+CXXCPP = x86_64-w64-mingw32-g++ -std=c++11 -E
 CXXDEPMODE = depmode=gcc3
-CXXFLAGS = -pipe -O2 -fPIC -O3 --param ggc-min-expand=1 --param ggc-min-heapsize=32768
+CXXFLAGS = -pipe -O2 -O3
 CYGPATH_W = echo
 DEBUG_CPPFLAGS = 
 DEBUG_CXXFLAGS = 
 DEFS = -DHAVE_CONFIG_H
 DEPDIR = .deps
-DLLTOOL = false
+DLLTOOL = x86_64-w64-mingw32-dlltool
 DOXYGEN = 
 DSYMUTIL = 
 DUMPBIN = 
@@ -1924,14 +1924,14 @@ ECHO_N = -n
 ECHO_T = 
 EGREP = /bin/grep -E
 ERROR_CXXFLAGS = 
-EVENT_CFLAGS = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include
-EVENT_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -levent
-EVENT_PTHREADS_CFLAGS = -pthread -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include
-EVENT_PTHREADS_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -levent_pthreads -levent
-EXEEXT = 
+EVENT_CFLAGS = 
+EVENT_LIBS = -levent
+EVENT_PTHREADS_CFLAGS = 
+EVENT_PTHREADS_LIBS = 
+EXEEXT = .exe
 EXTENDED_FUNCTIONAL_TESTS = 
 FGREP = /bin/grep -F
-GCOV = /usr/bin/gcov
+GCOV = /usr/bin/x86_64-w64-mingw32-gcov
 GENHTML = 
 GENISOIMAGE = 
 GIT = /usr/bin/git
@@ -1940,7 +1940,7 @@ GPROF_LDFLAGS =
 GREP = /bin/grep
 HARDENED_CPPFLAGS =  -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2
 HARDENED_CXXFLAGS =  -Wstack-protector -fstack-protector-all
-HARDENED_LDFLAGS =  -Wl,-z,relro -Wl,-z,now -pie
+HARDENED_LDFLAGS =  -Wl,--dynamicbase -Wl,--nxcompat -Wl,--high-entropy-va -pie
 HAVE_CXX11 = 1
 HEXDUMP = /usr/bin/hexdump
 IMAGEMAGICK_CONVERT = 
@@ -1952,39 +1952,39 @@ INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
 LCOV = 
 LCOV_OPTS = 
-LD = /usr/bin/ld -m elf_x86_64
-LDFLAGS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/share/../lib -static-libstdc++
+LD = /usr/bin/x86_64-w64-mingw32-ld
+LDFLAGS = -L/home/ubuntu/777/depends/x86_64-w64-mingw32/share/../lib 
 LEVELDB_CPPFLAGS =  $(am__append_14)
-LEVELDB_TARGET_FLAGS = -DOS_LINUX
+LEVELDB_TARGET_FLAGS = -DOS_WINDOWS
 LIBLEVELDB =  $(am__append_12)
 LIBMEMENV =  $(am__append_13)
 LIBOBJS = 
-LIBS = -lrt  -lgmp
+LIBS = -lQt5AccessibilitySupport -lQt5DeviceDiscoverySupport -lQt5FbSupport -lQt5ThemeSupport -lQt5EventDispatcherSupport -lQt5FontDatabaseSupport -lssp -lcrypt32 -liphlpapi -lshlwapi -lmswsock -lws2_32 -ladvapi32 -lrpcrt4 -luuid -loleaut32 -lole32 -lcomctl32 -lshell32 -lwinmm -lwinspool -lcomdlg32 -lgdi32 -luser32 -lkernel32 -lmingwthrd  -lgmp
 LIBTOOL = $(SHELL) $(top_builddir)/libtool
-LIBTOOL_APP_LDFLAGS = 
+LIBTOOL_APP_LDFLAGS =  -all-static
 LIPO = 
 LN_S = ln -s
-LRELEASE = /home/ubuntu/777/depends/x86_64-pc-linux-gnu/share/../native/bin/lrelease
+LRELEASE = /home/ubuntu/777/depends/x86_64-w64-mingw32/share/../native/bin/lrelease
 LTLIBOBJS = 
 LT_SYS_LIBRARY_PATH = 
-LUPDATE = /home/ubuntu/777/depends/x86_64-pc-linux-gnu/share/../native/bin/lupdate
+LUPDATE = /home/ubuntu/777/depends/x86_64-w64-mingw32/share/../native/bin/lupdate
 MAINT = 
 MAKEINFO = ${SHELL} /home/ubuntu/777/build-aux/missing makeinfo
-MAKENSIS = 
+MAKENSIS = none
 MANIFEST_TOOL = :
-MINIUPNPC_CPPFLAGS = 
+MINIUPNPC_CPPFLAGS = -DSTATICLIB -DMINIUPNP_STATICLIB
 MINIUPNPC_LIBS = -lminiupnpc
 MKDIR_P = /bin/mkdir -p
-MOC = /home/ubuntu/777/depends/x86_64-pc-linux-gnu/share/../native/bin/moc
+MOC = /home/ubuntu/777/depends/x86_64-w64-mingw32/share/../native/bin/moc
 MOC_DEFS = -DHAVE_CONFIG_H -I$(srcdir)
-NM = nm
+NM = x86_64-w64-mingw32-nm
 NMEDIT = 
 NOWARN_CXXFLAGS = 
-OBJCOPY = /usr/bin/objcopy
-OBJCXX = g++ -m64 -std=c++11
+OBJCOPY = /usr/bin/x86_64-w64-mingw32-objcopy
+OBJCXX = x86_64-w64-mingw32-g++ -std=c++11
 OBJCXXDEPMODE = depmode=gcc3
 OBJCXXFLAGS = 
-OBJDUMP = objdump
+OBJDUMP = x86_64-w64-mingw32-objdump
 OBJEXT = o
 OTOOL = 
 OTOOL64 = 
@@ -1996,66 +1996,66 @@ PACKAGE_TARNAME = jackpot
 PACKAGE_URL = https://www.jackpotnetwork.io/
 PACKAGE_VERSION = 2.0.1.1
 PATH_SEPARATOR = :
-PIC_FLAGS = -fPIC
+PIC_FLAGS = 
 PIE_FLAGS = -fPIE
 PKG_CONFIG = /usr/bin/pkg-config --static
 PKG_CONFIG_LIBDIR = 
-PKG_CONFIG_PATH = /home/ubuntu/777/depends/x86_64-pc-linux-gnu/share/../share/pkgconfig:/home/ubuntu/777/depends/x86_64-pc-linux-gnu/share/../lib/pkgconfig
+PKG_CONFIG_PATH = /home/ubuntu/777/depends/x86_64-w64-mingw32/share/../share/pkgconfig:/home/ubuntu/777/depends/x86_64-w64-mingw32/share/../lib/pkgconfig
 PORT = 
-PROTOBUF_CFLAGS = -pthread -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include
-PROTOBUF_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lprotobuf -pthread -lpthread -lz
-PROTOC = /home/ubuntu/777/depends/x86_64-pc-linux-gnu/share/../native/bin/protoc
-PTHREAD_CC = gcc -m64
+PROTOBUF_CFLAGS = 
+PROTOBUF_LIBS = -lprotobuf
+PROTOC = /home/ubuntu/777/depends/x86_64-w64-mingw32/share/../native/bin/protoc
+PTHREAD_CC = x86_64-w64-mingw32-gcc
 PTHREAD_CFLAGS = -pthread
 PTHREAD_LIBS = 
 PYTHON = /usr/bin/python3.6
-PYTHONPATH = /home/ubuntu/777/depends/x86_64-pc-linux-gnu/share/../native/lib/python3/dist-packages:
-QR_CFLAGS = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include
-QR_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lqrencode -lpthread
-QT5_CFLAGS = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtNetwork -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtWidgets -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtGui -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtCore
-QT5_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lQt5Network -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lz -lssl -lcrypto -lQt5Widgets -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl
-QTACCESSIBILITY_CFLAGS = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtAccessibilitySupport -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtGui -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtCore
-QTACCESSIBILITY_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lQt5AccessibilitySupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl
+PYTHONPATH = /home/ubuntu/777/depends/x86_64-w64-mingw32/share/../native/lib/python3/dist-packages:
+QR_CFLAGS = 
+QR_LIBS = -lqrencode
+QT5_CFLAGS = 
+QT5_LIBS = 
+QTACCESSIBILITY_CFLAGS = 
+QTACCESSIBILITY_LIBS = 
 QTCGL_CFLAGS = 
 QTCGL_LIBS = 
 QTCLIPBOARD_CFLAGS = 
 QTCLIPBOARD_LIBS = 
-QTDEVICEDISCOVERY_CFLAGS = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtDeviceDiscoverySupport -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtCore
-QTDEVICEDISCOVERY_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lQt5DeviceDiscoverySupport -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl
-QTEVENTDISPATCHER_CFLAGS = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtEventDispatcherSupport -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtGui -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtCore
-QTEVENTDISPATCHER_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lQt5EventDispatcherSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl
-QTFB_CFLAGS = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtFbSupport -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtGui -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtCore
-QTFB_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lQt5FbSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl
-QTFONTDATABASE_CFLAGS = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtFontDatabaseSupport -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtGui -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtCore
-QTFONTDATABASE_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -L//home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lQt5FontDatabaseSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lfontconfig -lfreetype -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl
+QTDEVICEDISCOVERY_CFLAGS = 
+QTDEVICEDISCOVERY_LIBS = 
+QTEVENTDISPATCHER_CFLAGS = 
+QTEVENTDISPATCHER_LIBS = 
+QTFB_CFLAGS = 
+QTFB_LIBS = 
+QTFONTDATABASE_CFLAGS = 
+QTFONTDATABASE_LIBS = 
 QTGRAPHICS_CFLAGS = 
 QTGRAPHICS_LIBS = 
 QTPLATFORM_CFLAGS = 
 QTPLATFORM_LIBS = 
-QTTHEME_CFLAGS = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtThemeSupport -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtGui -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtCore
-QTTHEME_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lQt5ThemeSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5DBus -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl
-QTXCBQPA_CFLAGS = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtXcbQpa -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtServiceSupport -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtThemeSupport -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtEventDispatcherSupport -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtFontDatabaseSupport -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtGui -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtCore
-QTXCBQPA_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -L//home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -L//home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lQt5XcbQpa -lQt5ServiceSupport -lQt5ThemeSupport -lQt5DBus -lQt5EventDispatcherSupport -lQt5FontDatabaseSupport -lfontconfig -lfreetype -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -lpthread -lX11-xcb -lX11 -lxcb-static -lxcb -ldl -lQt5ServiceSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5ThemeSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5DBus -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl -lQt5EventDispatcherSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5FontDatabaseSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lfontconfig -lfreetype -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl
-QT_CONCURRENT_CFLAGS = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtConcurrent -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtCore
-QT_CONCURRENT_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lQt5Concurrent -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl
-QT_DBUS_CFLAGS = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtDBus -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtCore
-QT_DBUS_INCLUDES = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtDBus -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtCore
-QT_DBUS_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lQt5DBus -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl
-QT_INCLUDES = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtNetwork -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtWidgets -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtGui -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtCore -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtConcurrent -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtCore
-QT_LDFLAGS = 
-QT_LIBS = -lqxcb -lxcb-static -lqsvgicon -lqgif -lqsvg -lqminimal -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -L//home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -L//home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lQt5XcbQpa -lQt5ServiceSupport -lQt5ThemeSupport -lQt5DBus -lQt5EventDispatcherSupport -lQt5FontDatabaseSupport -lfontconfig -lfreetype -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -lpthread -lX11-xcb -lX11 -lxcb-static -lxcb -ldl -lQt5ServiceSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5ThemeSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5DBus -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl -lQt5EventDispatcherSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5FontDatabaseSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lfontconfig -lfreetype -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lX11-xcb -lX11 -lpthread -lxcb -lXau -lQt5FbSupport -lQt5AccessibilitySupport -lQt5DeviceDiscoverySupport -lQt5ThemeSupport -lQt5EventDispatcherSupport -lQt5FontDatabaseSupport -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lQt5Network -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lz -lssl -lcrypto -lQt5Widgets -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -L/home/ubuntu/777/depends/work/build/x86_64-pc-linux-gnu/qt/5.9.7-2e088639266/qtbase/lib -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lQt5Svg -lQt5Widgets -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lz -lQt5Widgets -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lQt5Concurrent -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/share/../plugins/platforms -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/share/../plugins/imageformats -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/share/../plugins/iconengines
+QTTHEME_CFLAGS = 
+QTTHEME_LIBS = 
+QTXCBQPA_CFLAGS = 
+QTXCBQPA_LIBS = 
+QT_CONCURRENT_CFLAGS = 
+QT_CONCURRENT_LIBS = 
+QT_DBUS_CFLAGS = 
+QT_DBUS_INCLUDES = 
+QT_DBUS_LIBS = -lQt5DBus -L/home/ubuntu/777/depends/x86_64-w64-mingw32/share/../lib
+QT_INCLUDES = -I/home/ubuntu/777/depends/x86_64-w64-mingw32/share/../include -I/home/ubuntu/777/depends/x86_64-w64-mingw32/share/../include/QtCore -I/home/ubuntu/777/depends/x86_64-w64-mingw32/share/../include/QtGui -I/home/ubuntu/777/depends/x86_64-w64-mingw32/share/../include/QtWidgets -I/home/ubuntu/777/depends/x86_64-w64-mingw32/share/../include/QtNetwork -I/home/ubuntu/777/depends/x86_64-w64-mingw32/share/../include/QtTest -I/home/ubuntu/777/depends/x86_64-w64-mingw32/share/../include/QtDBus -I/home/ubuntu/777/depends/x86_64-w64-mingw32/share/../include/QtConcurrent -I/home/ubuntu/777/depends/x86_64-w64-mingw32/share/../include/QtSvg -I/home/ubuntu/777/depends/x86_64-w64-mingw32/share/../include/QtCharts
+QT_LDFLAGS =  -mwindows
+QT_LIBS = -lqwindows -lqsvgicon -lqgif -lqsvg -lqminimal -lQt5Concurrent -lQt5Widgets -lQt5Network -lQt5Gui     -lQt5Core    -lqtharfbuzz -lqtpcre2 -lqtlibpng -lz  -limm32  -L/home/ubuntu/777/depends/x86_64-w64-mingw32/share/../lib -lQt5Svg -L/home/ubuntu/777/depends/x86_64-w64-mingw32/share/../lib -L/home/ubuntu/777/depends/x86_64-w64-mingw32/share/../plugins/platforms -L/home/ubuntu/777/depends/x86_64-w64-mingw32/share/../plugins/imageformats -L/home/ubuntu/777/depends/x86_64-w64-mingw32/share/../plugins/iconengines -lversion -ldwmapi -luxtheme
 QT_PIE_FLAGS = -fPIE
 QT_SELECT = qt5
-QT_SVG_CFLAGS = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtSvg -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtWidgets -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtGui -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtCore
-QT_SVG_INCLUDES = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtSvg -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtWidgets -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtGui -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtCore
-QT_SVG_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -L/home/ubuntu/777/depends/work/build/x86_64-pc-linux-gnu/qt/5.9.7-2e088639266/qtbase/lib -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lQt5Svg -lQt5Widgets -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lz -lQt5Widgets -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl
-QT_TEST_CFLAGS = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtTest -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtCore
-QT_TEST_INCLUDES = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtTest -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/QtCore
-QT_TEST_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lQt5Test -lQt5Core -lm -lz -lqtpcre2 -ldl -lpthread -lQt5Core -lpthread -lm -lz -lqtpcre2 -ldl
-QT_TRANSLATION_DIR = /home/ubuntu/777/depends/x86_64-pc-linux-gnu/share/../translations
-RANLIB = ranlib
-RCC = /home/ubuntu/777/depends/x86_64-pc-linux-gnu/share/../native/bin/rcc
-READELF = /usr/bin/readelf
+QT_SVG_CFLAGS = 
+QT_SVG_INCLUDES = 
+QT_SVG_LIBS = -lQt5Svg -L/home/ubuntu/777/depends/x86_64-w64-mingw32/share/../lib
+QT_TEST_CFLAGS = 
+QT_TEST_INCLUDES = 
+QT_TEST_LIBS = -lQt5Test -L/home/ubuntu/777/depends/x86_64-w64-mingw32/share/../lib
+QT_TRANSLATION_DIR = /home/ubuntu/777/depends/x86_64-w64-mingw32/share/../translations
+RANLIB = /usr/bin/x86_64-w64-mingw32-ranlib
+RCC = /home/ubuntu/777/depends/x86_64-w64-mingw32/share/../native/bin/rcc
+READELF = /usr/bin/x86_64-w64-mingw32-readelf
 RELDFLAGS = 
 RSVG_CONVERT = 
 SANITIZER_CXXFLAGS = 
@@ -2066,12 +2066,12 @@ SHANI_CXXFLAGS = -msse4 -msha
 SHELL = /bin/bash
 SSE41_CXXFLAGS = -msse4.1
 SSE42_CXXFLAGS = -msse4.2
-SSL_CFLAGS = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include
-SSL_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lssl -lcrypto -ldl
-STRIP = /usr/bin/strip
+SSL_CFLAGS = 
+SSL_LIBS = -lssl
+STRIP = /usr/bin/x86_64-w64-mingw32-strip
 TESTDEFS = 
 TIFFCP = 
-UIC = /home/ubuntu/777/depends/x86_64-pc-linux-gnu/share/../native/bin/uic
+UIC = /home/ubuntu/777/depends/x86_64-w64-mingw32/share/../native/bin/uic
 UNIVALUE_CFLAGS = -I$(srcdir)/univalue/include
 UNIVALUE_LIBS = univalue/libunivalue.la
 USE_NUM_GMP = 
@@ -2080,13 +2080,13 @@ USE_QTCHARTS =
 USE_UPNP = 
 VERSION = 2.0.1.1
 WARN_CXXFLAGS = 
-WINDOWS_BITS = 
-WINDRES = 
-X11XCB_CFLAGS = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include/xcb-shared -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include
-X11XCB_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lX11-xcb -lX11 -lpthread -lxcb -lXau
+WINDOWS_BITS = 64
+WINDRES = /usr/bin/x86_64-w64-mingw32-windres
+X11XCB_CFLAGS = 
+X11XCB_LIBS = 
 XGETTEXT = /usr/bin/xgettext
-ZMQ_CFLAGS = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/include
-ZMQ_LIBS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/lib -lzmq -lpthread -lrt
+ZMQ_CFLAGS =  -DZMQ_STATIC
+ZMQ_LIBS = -lzmq
 abs_builddir = /home/ubuntu/777/src
 abs_srcdir = /home/ubuntu/777/src
 abs_top_builddir = /home/ubuntu/777
@@ -2114,11 +2114,11 @@ datarootdir = ${prefix}/share
 docdir = ${datarootdir}/doc/${PACKAGE_TARNAME}
 dvidir = ${docdir}
 exec_prefix = ${prefix}
-host = x86_64-pc-linux-gnu
-host_alias = x86_64-pc-linux-gnu
+host = x86_64-w64-mingw32
+host_alias = x86_64-w64-mingw32
 host_cpu = x86_64
-host_os = linux-gnu
-host_vendor = pc
+host_os = mingw32
+host_vendor = w64
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
@@ -2131,7 +2131,7 @@ mandir = ${datarootdir}/man
 mkdir_p = $(MKDIR_P)
 oldincludedir = /usr/include
 pdfdir = ${docdir}
-prefix = /home/ubuntu/777/depends/x86_64-pc-linux-gnu
+prefix = /home/ubuntu/777/depends/x86_64-w64-mingw32
 program_transform_name = s,x,x,
 psdir = ${docdir}
 runstatedir = ${localstatedir}/run
@@ -12225,13 +12225,13 @@ qt/test/test_pivx-qt.log: qt/test/test_pivx-qt$(EXEEXT)
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_TEST_LOG_DRIVER_FLAGS) $(TEST_LOG_DRIVER_FLAGS) -- $(TEST_LOG_COMPILE) \
 	"$$tst" $(AM_TESTS_FD_REDIRECT)
-#.test$(EXEEXT).log:
-#	@p='$<'; \
-#	$(am__set_b); \
-#	$(am__check_pre) $(TEST_LOG_DRIVER) --test-name "$$f" \
-#	--log-file $$b.log --trs-file $$b.trs \
-#	$(am__common_driver_flags) $(AM_TEST_LOG_DRIVER_FLAGS) $(TEST_LOG_DRIVER_FLAGS) -- $(TEST_LOG_COMPILE) \
-#	"$$tst" $(AM_TESTS_FD_REDIRECT)
+.test$(EXEEXT).log:
+	@p='$<'; \
+	$(am__set_b); \
+	$(am__check_pre) $(TEST_LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_TEST_LOG_DRIVER_FLAGS) $(TEST_LOG_DRIVER_FLAGS) -- $(TEST_LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
 
 distdir: $(DISTFILES)
 	@srcdirstrip=`echo "$(srcdir)" | sed 's/[].[^$$\\*]/\\\\&/g'`; \
@@ -12514,8 +12514,8 @@ clean-local:
 	$(AM_V_GEN) $(WINDRES) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(CPPFLAGS) -DWINDRES_PREPROC -i $< -o $@
 
 check-symbols: $(bin_PROGRAMS)
-	@echo "Checking glibc back compat..."
-	$(AM_V_at) READELF=$(READELF) CPPFILT=$(CPPFILT) $(PYTHON) $(top_srcdir)/contrib/devtools/symbol-check.py < $(bin_PROGRAMS)
+#	@echo "Checking glibc back compat..."
+#	$(AM_V_at) READELF=$(READELF) CPPFILT=$(CPPFILT) $(PYTHON) $(top_srcdir)/contrib/devtools/symbol-check.py < $(bin_PROGRAMS)
 
 check-security: $(bin_PROGRAMS)
 	@echo "Checking binary security..."

@@ -90,7 +90,7 @@ NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = x86_64-pc-linux-gnu
-host_triplet = x86_64-pc-linux-gnu
+host_triplet = x86_64-w64-mingw32
 TESTS = test/object$(EXEEXT) test/unitester$(EXEEXT) \
 	test/no_nul$(EXEEXT)
 noinst_PROGRAMS = $(am__EXEEXT_1) test/test_json$(EXEEXT)
@@ -412,7 +412,7 @@ am__set_TESTS_bases = \
   bases=`echo $$bases`
 RECHECK_LOGS = $(TEST_LOGS)
 TEST_SUITE_LOG = test-suite.log
-TEST_EXTENSIONS =  .test
+TEST_EXTENSIONS = .exe .test
 LOG_DRIVER = $(SHELL) $(top_srcdir)/build-aux/test-driver
 LOG_COMPILE = $(LOG_COMPILER) $(AM_LOG_FLAGS) $(LOG_FLAGS)
 am__set_b = \
@@ -426,7 +426,7 @@ am__set_b = \
       b='$*';; \
   esac
 am__test_logs1 = $(TESTS:=.log)
-am__test_logs2 = $(am__test_logs1:.log=.log)
+am__test_logs2 = $(am__test_logs1:.exe.log=.log)
 TEST_LOGS = $(am__test_logs2:.test.log=.log)
 TEST_LOG_DRIVER = $(SHELL) $(top_srcdir)/build-aux/test-driver
 TEST_LOG_COMPILE = $(TEST_LOG_COMPILER) $(AM_TEST_LOG_FLAGS) \
@@ -465,32 +465,32 @@ distcleancheck_listfiles = find . -type f -print
 ACLOCAL = ${SHELL} /home/ubuntu/777/src/univalue/build-aux/missing aclocal-1.15
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 0
-AR = ar
+AR = x86_64-w64-mingw32-ar
 AUTOCONF = ${SHELL} /home/ubuntu/777/src/univalue/build-aux/missing autoconf
 AUTOHEADER = ${SHELL} /home/ubuntu/777/src/univalue/build-aux/missing autoheader
 AUTOMAKE = ${SHELL} /home/ubuntu/777/src/univalue/build-aux/missing automake-1.15
 AWK = mawk
 BUILD_EXEEXT = 
-CC = gcc -m64
+CC = x86_64-w64-mingw32-gcc
 CCDEPMODE = depmode=gcc3
-CFLAGS = -pipe -O2 
-CPP = gcc -m64 -E
-CPPFLAGS = -I/home/ubuntu/777/depends/x86_64-pc-linux-gnu/share/../include/ -fPIC -O3 --param ggc-min-expand=1 --param ggc-min-heapsize=32768
-CXX = g++ -m64
-CXXCPP = g++ -m64 -E
+CFLAGS = -pipe -O2 -O3
+CPP = x86_64-w64-mingw32-gcc -E
+CPPFLAGS = -I/home/ubuntu/777/depends/x86_64-w64-mingw32/share/../include/ 
+CXX = x86_64-w64-mingw32-g++
+CXXCPP = x86_64-w64-mingw32-g++ -E
 CXXDEPMODE = depmode=gcc3
-CXXFLAGS = -pipe -O2 -fPIC -O3 --param ggc-min-expand=1 --param ggc-min-heapsize=32768
+CXXFLAGS = -pipe -O2 -O3
 CYGPATH_W = echo
 DEFS = -DHAVE_CONFIG_H
 DEPDIR = .deps
-DLLTOOL = false
+DLLTOOL = x86_64-w64-mingw32-dlltool
 DSYMUTIL = 
 DUMPBIN = 
 ECHO_C = 
 ECHO_N = -n
 ECHO_T = 
 EGREP = /bin/grep -E
-EXEEXT = 
+EXEEXT = .exe
 FGREP = /bin/grep -F
 GREP = /bin/grep
 INSTALL = /usr/bin/install -c
@@ -498,12 +498,12 @@ INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
-LD = /usr/bin/ld -m elf_x86_64
-LDFLAGS = -L/home/ubuntu/777/depends/x86_64-pc-linux-gnu/share/../lib -static-libstdc++
+LD = /usr/bin/x86_64-w64-mingw32-ld
+LDFLAGS = -L/home/ubuntu/777/depends/x86_64-w64-mingw32/share/../lib 
 LIBOBJS = 
 LIBS = 
 LIBTOOL = $(SHELL) $(top_builddir)/libtool
-LIBTOOL_APP_LDFLAGS = 
+LIBTOOL_APP_LDFLAGS =  -all-static
 LIBUNIVALUE_AGE = 100
 LIBUNIVALUE_CURRENT = 100
 LIBUNIVALUE_REVISION = 3
@@ -514,9 +514,9 @@ LT_SYS_LIBRARY_PATH =
 MAKEINFO = ${SHELL} /home/ubuntu/777/src/univalue/build-aux/missing makeinfo
 MANIFEST_TOOL = :
 MKDIR_P = /bin/mkdir -p
-NM = nm
+NM = x86_64-w64-mingw32-nm
 NMEDIT = 
-OBJDUMP = objdump
+OBJDUMP = x86_64-w64-mingw32-objdump
 OBJEXT = o
 OTOOL = 
 OTOOL64 = 
@@ -528,11 +528,11 @@ PACKAGE_TARNAME = univalue
 PACKAGE_URL = 
 PACKAGE_VERSION = 1.0.3
 PATH_SEPARATOR = :
-RANLIB = ranlib
+RANLIB = x86_64-w64-mingw32-ranlib
 SED = /bin/sed
 SET_MAKE = 
 SHELL = /bin/bash
-STRIP = strip
+STRIP = x86_64-w64-mingw32-strip
 VERSION = 1.0.3
 abs_builddir = /home/ubuntu/777/src/univalue
 abs_srcdir = /home/ubuntu/777/src/univalue
@@ -559,11 +559,11 @@ datarootdir = ${prefix}/share
 docdir = ${datarootdir}/doc/${PACKAGE_TARNAME}
 dvidir = ${docdir}
 exec_prefix = ${prefix}
-host = x86_64-pc-linux-gnu
-host_alias = x86_64-pc-linux-gnu
+host = x86_64-w64-mingw32
+host_alias = x86_64-w64-mingw32
 host_cpu = x86_64
-host_os = linux-gnu
-host_vendor = pc
+host_os = mingw32
+host_vendor = w64
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
@@ -576,7 +576,7 @@ mandir = ${datarootdir}/man
 mkdir_p = $(MKDIR_P)
 oldincludedir = /usr/include
 pdfdir = ${docdir}
-prefix = /home/ubuntu/777/depends/x86_64-pc-linux-gnu
+prefix = /home/ubuntu/777/depends/x86_64-w64-mingw32
 program_transform_name = s,x,x,
 psdir = ${docdir}
 runstatedir = ${localstatedir}/run
@@ -1225,13 +1225,13 @@ test/no_nul.log: test/no_nul$(EXEEXT)
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_TEST_LOG_DRIVER_FLAGS) $(TEST_LOG_DRIVER_FLAGS) -- $(TEST_LOG_COMPILE) \
 	"$$tst" $(AM_TESTS_FD_REDIRECT)
-#.test$(EXEEXT).log:
-#	@p='$<'; \
-#	$(am__set_b); \
-#	$(am__check_pre) $(TEST_LOG_DRIVER) --test-name "$$f" \
-#	--log-file $$b.log --trs-file $$b.trs \
-#	$(am__common_driver_flags) $(AM_TEST_LOG_DRIVER_FLAGS) $(TEST_LOG_DRIVER_FLAGS) -- $(TEST_LOG_COMPILE) \
-#	"$$tst" $(AM_TESTS_FD_REDIRECT)
+.test$(EXEEXT).log:
+	@p='$<'; \
+	$(am__set_b); \
+	$(am__check_pre) $(TEST_LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_TEST_LOG_DRIVER_FLAGS) $(TEST_LOG_DRIVER_FLAGS) -- $(TEST_LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
 
 distdir: $(DISTFILES)
 	$(am__remove_distdir)
