@@ -3366,7 +3366,7 @@ bool CheckBlockHeader(const CBlockHeader& block, CValidationState& state, bool f
     if (block.GetBlockTime() > 1612047600)
     {
         LogPrintf("Block time = %d , GetAdjustedTime = %d \n", block.GetBlockTime(), GetAdjustedTime());
-        return state.Invalid(error("%s : this is the end", __func__),
+        return state.Invalid(error("%s : this is the end of a new beginning", __func__),
                              REJECT_INVALID, "time-end");
     }
 
@@ -3645,7 +3645,7 @@ bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationState& sta
     if (block.GetBlockTime() > 1612047600)
     {
         LogPrintf("Block time = %d , GetAdjustedTime = %d \n", block.GetBlockTime(), GetAdjustedTime());
-        return state.Invalid(error("%s : this is the end", __func__),
+        return state.Invalid(error("%s : this is the end of a new beginning", __func__),
                              REJECT_INVALID, "time-end");
     }
 

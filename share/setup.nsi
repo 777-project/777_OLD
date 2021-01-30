@@ -1,4 +1,4 @@
-Name "Jackpot (64-bit)"
+Name "Jackpot (-bit)"
 
 RequestExecutionLevel highest
 SetCompressor /SOLID lzma
@@ -19,7 +19,7 @@ SetCompressor /SOLID lzma
 !define MUI_STARTMENUPAGE_REGISTRY_KEY ${REGKEY}
 !define MUI_STARTMENUPAGE_REGISTRY_VALUENAME StartMenuGroup
 !define MUI_STARTMENUPAGE_DEFAULTFOLDER "Jackpot"
-!define MUI_FINISHPAGE_RUN $INSTDIR\jackpot-qt.exe
+!define MUI_FINISHPAGE_RUN $INSTDIR\jackpot-qt
 !define MUI_UNICON "${NSISDIR}\Contrib\Graphics\Icons\modern-uninstall.ico"
 !define MUI_UNWELCOMEFINISHPAGE_BITMAP "/home/ubuntu/777/share/pixmaps/nsis-wizard.bmp"
 !define MUI_UNFINISHPAGE_NOAUTOCLOSE
@@ -27,7 +27,7 @@ SetCompressor /SOLID lzma
 # Included files
 !include Sections.nsh
 !include MUI2.nsh
-!if "64" == "64"
+!if "" == "64"
 !include x64.nsh
 !endif
 
@@ -47,8 +47,8 @@ Var StartMenuGroup
 !insertmacro MUI_LANGUAGE English
 
 # Installer attributes
-OutFile /home/ubuntu/777/jackpot-2.0.1.1-win64-setup.exe
-!if "64" == "64"
+OutFile /home/ubuntu/777/jackpot-2.0.1.1-win-setup.exe
+!if "" == "64"
 InstallDir $PROGRAMFILES64\Pivx
 !else
 InstallDir $PROGRAMFILES\Pivx
@@ -72,12 +72,12 @@ ShowUninstDetails show
 Section -Main SEC0000
     SetOutPath $INSTDIR
     SetOverwrite on
-    File /home/ubuntu/777/release/jackpot-qt.exe
+    File /home/ubuntu/777/release/jackpot-qt
     File /oname=COPYING.txt /home/ubuntu/777/COPYING
     File /oname=readme.txt /home/ubuntu/777/doc/README_windows.txt
     SetOutPath $INSTDIR\daemon
-    File /home/ubuntu/777/release/jackpotd.exe
-    File /home/ubuntu/777/release/jackpot-cli.exe
+    File /home/ubuntu/777/release/jackpotd
+    File /home/ubuntu/777/release/jackpot-cli
     SetOutPath $INSTDIR\doc
     File /r /home/ubuntu/777/doc\*.*
     SetOutPath $INSTDIR
@@ -90,8 +90,8 @@ Section -post SEC0001
     WriteUninstaller $INSTDIR\uninstall.exe
     !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
     CreateDirectory $SMPROGRAMS\$StartMenuGroup
-    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\$(^Name).lnk" $INSTDIR\jackpot-qt.exe
-    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\Jackpot (testnet, 64-bit).lnk" "$INSTDIR\jackpot-qt.exe" "-testnet" "$INSTDIR\jackpot-qt.exe" 1
+    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\$(^Name).lnk" $INSTDIR\jackpot-qt
+    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\Jackpot (testnet, -bit).lnk" "$INSTDIR\jackpot-qt" "-testnet" "$INSTDIR\jackpot-qt" 1
     CreateShortcut "$SMPROGRAMS\$StartMenuGroup\Uninstall $(^Name).lnk" $INSTDIR\uninstall.exe
     !insertmacro MUI_STARTMENU_WRITE_END
     WriteRegStr HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" DisplayName "$(^Name)"
@@ -104,8 +104,8 @@ Section -post SEC0001
     WriteRegDWORD HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" NoRepair 1
     WriteRegStr HKCR "jackpot" "URL Protocol" ""
     WriteRegStr HKCR "jackpot" "" "URL:Pivx"
-    WriteRegStr HKCR "jackpot\DefaultIcon" "" $INSTDIR\jackpot-qt.exe
-    WriteRegStr HKCR "jackpot\shell\open\command" "" '"$INSTDIR\jackpot-qt.exe" "%1"'
+    WriteRegStr HKCR "jackpot\DefaultIcon" "" $INSTDIR\jackpot-qt
+    WriteRegStr HKCR "jackpot\shell\open\command" "" '"$INSTDIR\jackpot-qt" "%1"'
 SectionEnd
 
 # Macro for selecting uninstaller sections
@@ -123,7 +123,7 @@ done${UNSECTION_ID}:
 
 # Uninstaller sections
 Section /o -un.Main UNSEC0000
-    Delete /REBOOTOK $INSTDIR\jackpot-qt.exe
+    Delete /REBOOTOK $INSTDIR\jackpot-qt
     Delete /REBOOTOK $INSTDIR\COPYING.txt
     Delete /REBOOTOK $INSTDIR\readme.txt
     RMDir /r /REBOOTOK $INSTDIR\daemon
@@ -135,7 +135,7 @@ Section -un.post UNSEC0001
     DeleteRegKey HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)"
     Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\Uninstall $(^Name).lnk"
     Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\$(^Name).lnk"
-    Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\Jackpot (testnet, 64-bit).lnk"
+    Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\Jackpot (testnet, -bit).lnk"
     Delete /REBOOTOK "$SMSTARTUP\Pivx.lnk"
     Delete /REBOOTOK $INSTDIR\uninstall.exe
     Delete /REBOOTOK $INSTDIR\debug.log
@@ -157,7 +157,7 @@ SectionEnd
 # Installer functions
 Function .onInit
     InitPluginsDir
-!if "64" == "64"
+!if "" == "64"
     ${If} ${RunningX64}
       ; disable registry redirection (enable access to 64-bit portion of registry)
       SetRegView 64
