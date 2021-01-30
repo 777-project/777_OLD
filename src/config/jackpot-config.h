@@ -9,7 +9,7 @@
 /* #undef AC_APPLE_UNIVERSAL_BUILD */
 
 /* Version Build */
-#define CLIENT_VERSION_BUILD 1
+#define CLIENT_VERSION_BUILD 0
 
 /* Version is release */
 #define CLIENT_VERSION_IS_RELEASE true
@@ -21,7 +21,7 @@
 #define CLIENT_VERSION_MINOR 0
 
 /* Build revision */
-#define CLIENT_VERSION_REVISION 1
+#define CLIENT_VERSION_REVISION 2
 
 /* Version is release */
 #define COPYRIGHT_YEAR 2020
@@ -352,7 +352,7 @@
 #define PACKAGE_NAME "Jackpot"
 
 /* Define to the full name and version of this package. */
-#define PACKAGE_STRING "Jackpot 2.0.1.1"
+#define PACKAGE_STRING "Jackpot 2.0.2"
 
 /* Define to the one symbol short name of this package. */
 #define PACKAGE_TARNAME "jackpot"
@@ -361,7 +361,7 @@
 #define PACKAGE_URL "https://www.jackpotnetwork.io/"
 
 /* Define to the version of this package. */
-#define PACKAGE_VERSION "2.0.1.1"
+#define PACKAGE_VERSION "2.0.2"
 
 /* Define to necessary symbol if this constant uses a non-standard name on
    your system. */
